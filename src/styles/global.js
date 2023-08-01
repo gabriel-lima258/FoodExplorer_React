@@ -8,15 +8,17 @@ export default createGlobalStyle`
     }
 
     body {
-        background-color: ${({theme}) => theme.COLORS.BACKGROUND_MAIN}; 
-        color: ${({theme}) => theme.COLORS.WHITE};
+        background-color: ${({theme}) => theme.COLORS.DARK_400}; 
+        color: ${({theme}) => theme.COLORS.LIGHT_100};
+
+        font-family: 'Roboto', sans-serif;
 
         -webkit-font-smoothing: antialiased;
     }
 
-    body, input, button, textarea {
+    button, textarea {
         font-family: 'Poppins', sans-serif;
-        font-family: 'Roboto', sans-serif;
+        
         font-size: 16px;
         outline: none;
     } 
@@ -32,5 +34,9 @@ export default createGlobalStyle`
 
     button:hover, a:hover {
         filter: brightness(0.9);
+    }
+
+    button, input {
+        border: none;
     }
 `
