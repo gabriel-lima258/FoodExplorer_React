@@ -27,7 +27,6 @@ export const Content = styled.main`
     grid-area: content;
     margin-top: 10px;
     width: 100%;
-    max-width: 428px;
 
     display: flex;
     flex-direction: column;

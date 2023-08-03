@@ -5,8 +5,14 @@ export const Container = styled.header`
 
     width: 100vw;
 
+    display: flex;
+    justify-content: space-between;
+
     .mobile {
+        grid-area: header;
         padding: 32px 30px;
+
+        width: 100vw;
 
         display: flex;
         align-items: center;

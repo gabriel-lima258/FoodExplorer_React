@@ -4,7 +4,6 @@ export const Container = styled.div`
     height: 100vh;
     width: 100vw;
     
-
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -27,7 +26,7 @@ export const Content = styled.main`
     grid-area: content;
     margin-top: 10px;
     width: 100%;
-    max-width: 428px;
+    
 
     display: flex;
     flex-direction: column;
@@ -64,9 +63,9 @@ export const Form = styled.form`
     }
 
     .buttons {
-        display: grid;
-        grid-template-columns: 160px 172px;
-        gap: 28px;
+        width: 100%;
+        display: flex;
+        gap: 32px;
     }
     
 `
