@@ -10,13 +10,32 @@ export const  Container = styled.div`
     justify-content: center;
 `;
 
+export const Logo = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .Logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        margin-bottom: 73px;
+
+        h1 {
+            font-size: 36px;
+            font-weight: 700;
+        }
+    }
+`
+
 export const Form = styled.form`
     max-width: 316px;
     width: 100%;
 
     display: flex;
     flex-direction: column;
-    gap: 44px;
+    gap: 32px;
 
     animation: slide-bot 0.3s backwards;
 `;

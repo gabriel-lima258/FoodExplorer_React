@@ -1,21 +1,27 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
+    
     width: 100%;
+    height: 48px;
+    max-width: 372px;
+
+    border-radius: 5px;
+    padding: 12px 14px;
+
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
 
-    border-radius: 8px;
+    gap: 8px;
 
-    background-color: ${({theme}) => theme.COLORS.DARK_800};
+    background-color: ${({theme}) => theme.COLORS.DARK_900};
 
     > input {
-        height: 48px;
         width: 100%;
-
-        padding: 12px 14px;
-
+        
+        font-size: 16px;
+        
         color: ${({theme}) => theme.COLORS.LIGHT_100};
         background: transparent;
         border: none;
@@ -28,8 +34,10 @@ export const Container = styled.div`
             font-size: 16px; 
         }
     }
-  
+
     > svg {
-            margin-left: 16px;
+        width: 24px;
+        height: 24px;
+        color: ${({theme}) => theme.COLORS.LIGHT_400};
     }
-`;
+`
