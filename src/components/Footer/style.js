@@ -8,7 +8,7 @@ export const Container = styled.div`
     align-items: center;
     justify-content: space-between;
 
-    width: 100vw;
+    width: 100%;
     padding: 24px;
 
     background-color: ${({theme}) => theme.COLORS.DARK_600};

@@ -2,12 +2,17 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
     height: 100vh;
-    width: 100vw;
-    
+    width: 100%;
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    display: grid;
+    
+    grid-template-rows: 114px auto 77px;
+    grid-template-areas: 
+    "header"
+    "content"
+    "footer"
+    ;
+
     overflow-x: hidden;
 
     overflow-y: auto;

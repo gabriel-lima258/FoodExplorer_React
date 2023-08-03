@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Container = styled.header`
     grid-area: header;
 
-    width: 100vw;
+    width: 100%;
 
     display: flex;
     justify-content: space-between;
@@ -12,7 +12,7 @@ export const Container = styled.header`
         grid-area: header;
         padding: 32px 30px;
 
-        width: 100vw;
+        width: 100%;
 
         display: flex;
         align-items: center;
