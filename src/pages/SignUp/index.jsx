@@ -15,37 +15,42 @@ export function SignUp(){
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [loading, setLoading] = useState(false); // função para quando carregar uma página
 
     const navigate = useNavigate();
 
-    function handleBack(){
-        navigate(-1);
+    function handleBack() {
+        navigate("/");
     }
 
-    function handleSignUp(){
-
-        if(!name || !email || !password){
-            return alert("Preencha todos os campos!");
+    function handleSignUp() {
+        if (!name || !email || !password) {
+          return alert("Preencha todos os campos");
         }
-
-        if(password.length < 6){
-            return alert("A senha precisa ter no mínimo 6 caracteres!");
+    
+        if (password.length < 6) {
+          return alert("A senha deve conter no mínimo 6 caracteres!")
         }
-        
+    
+        setLoading(true)
+    
         api.post("/users", {name, email, password})
-        .then(() => {
+          .then(() => {
             alert("Usuário cadastrado com sucesso!");
             navigate("/");
-        })
-        .catch(error => {
-            if(error.response){ //dá um alerta na mensagem dessa resposta desse erro, trazendo para o frontend a mensagem de AppError do backend
-                alert(error.response.data.message);
-            } else { //se não houver nenhuma mensagem específica
-                alert("Não foi possível efetuar o cadastro!");
+    
+            setLoading(false)
+          })
+          .catch(error => {
+            if(error.response) {
+              alert(error.response.data.message);
+            } else {
+              alert("Não foi possível cadastrar")
             }
-        });
-    }
-
+    
+            setLoading(false)
+          })
+      }
     return(
         <C.Container>
             <C.Logo>
@@ -70,7 +75,7 @@ export function SignUp(){
                 <Input
                 label="Email"
                 type="text"
-                placeholder="Exemplo: examplo@email.com.br"
+                placeholder="examplo@email.com.br"
                 onChange={e => setEmail(e.target.value)}
                 />
             </Section>
@@ -85,11 +90,12 @@ export function SignUp(){
             </Section>
 
             <Button
-                title="Criar conta"
+                title={loading ? "Cadastrando" : "Criar conta"}
                 onClick={handleSignUp}
+                disabled={loading}
             />
 
-            <ButtonText 
+            <ButtonText
                 title="Já tenho uma conta"
                 onClick={handleBack}
             />

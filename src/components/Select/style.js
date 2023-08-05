@@ -6,20 +6,20 @@ export const Container = styled.div`
     flex-direction: row;
     align-items: center;
 
-    border-radius: 5px;
+    border-radius: .5rem;
 
     background-color: ${({theme}) => theme.COLORS.DARK_900};
     
     > select {
-        height: 48px;
+        height: 4.8rem;
         width: 100%;
 
-        padding: 16px;
+        padding: 1.6rem;
 
         font-weight: 500;
-        font-size: 14px;
+        font-size: 1.4rem;
 
-        border-radius: 5px;
+        border-radius: .5rem;
 
         color: ${({ theme }) => theme.COLORS.LIGHT_400};
         background-color:  ${({ theme }) => theme.COLORS.LIGHT_400};
@@ -38,6 +38,6 @@ export const Container = styled.div`
     }
 
     > svg {
-            margin-right: 16px;
+            margin-right: 1.6rem;
     }
 `;

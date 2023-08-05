@@ -6,15 +6,15 @@ export const Container = styled.div`
     flex-direction: column;
     align-items: center;
 
-    border-radius: 8px;
+    border-radius: .8rem;
 
     background-color: ${({theme}) => theme.COLORS.DARK_800};
 
     > input {
-        height: 48px;
+        height: 4.8rem;
         width: 100%;
 
-        padding: 12px 14px;
+        padding: 1.2rem 1.4rem;
 
         color: ${({theme}) => theme.COLORS.LIGHT_100};
         background: transparent;
@@ -25,11 +25,11 @@ export const Container = styled.div`
 
         &::placeholder {
             color: ${({theme}) => theme.COLORS.LIGHT_500};
-            font-size: 16px; 
+            font-size: 1.6rem; 
         }
     }
   
     > svg {
-            margin-left: 16px;
+            margin-left: 1.6rem;
     }
 `;

@@ -6,6 +6,6 @@ export const Container = styled.button`
     border: none;
 
     font-family: 'Poppins', sans-serif;
-    font-size: 14px;
+    font-size: 1.4rem;
     font-weight: 500;
 `

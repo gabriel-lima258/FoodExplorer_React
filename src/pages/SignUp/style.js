@@ -18,24 +18,25 @@ export const Logo = styled.div`
     .Logo {
         display: flex;
         align-items: center;
-        gap: 10px;
+        gap: 1rem;
 
-        margin-bottom: 73px;
+        margin-bottom: 7.3rem;
 
         h1 {
-            font-size: 36px;
+            font-size: 3.6rem;
             font-weight: 700;
         }
     }
 `
 
 export const Form = styled.form`
-    max-width: 316px;
+    max-width: 31.6rem;
     width: 100%;
 
     display: flex;
     flex-direction: column;
-    gap: 32px;
+    gap: 3.2rem;
 
     animation: slide-bot 0.3s backwards;
+
 `;

@@ -16,7 +16,7 @@ export function SignIn(){
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    const {signIn} = useAuth();
+    const {signIn, loading} = useAuth();
 
     const navigate = useNavigate();
 
@@ -43,7 +43,7 @@ export function SignIn(){
                 <Input
                 label="Email"
                 type="text"
-                placeholder="Exemplo: examplo@email.com.br"
+                placeholder="examplo@email.com.br"
                 onChange={e => setEmail(e.target.value)}
                 />
             </Section>
@@ -58,12 +58,12 @@ export function SignIn(){
             </Section>
 
             <Button
-                type="button"
-                title="Entrar"
+                title={loading ? "Entrando" : "Entrar"}
                 onClick={handleSignIn}
+                disabled={loading}
             />
 
-            <ButtonText 
+            <ButtonText
                 title="Criar uma conta"
                 onClick={handleRegister}
             />

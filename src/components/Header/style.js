@@ -10,7 +10,7 @@ export const Container = styled.header`
 
     .mobile {
         grid-area: header;
-        padding: 32px 30px;
+        padding: 3.2rem 3rem;
 
         width: 100%;
 
@@ -29,26 +29,26 @@ export const Container = styled.header`
 export const Logo = styled.div`
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 1rem;
 
     h1 {
-        font-size: 21px;
+        font-size: 2.1rem;
         font-weight: 700;
     }
 
     img {
-        height: 24px;
-        width: 24px;
+        height: 2.4rem;
+        width: 2.4rem;
     }
 
     span {
-        font-size: 12px;
+        font-size: 1.2rem;
         color: ${({theme}) => theme.COLORS.CAKE_200};
     }
 `
 
 export const IconButton = styled.button`
-    font-size: 30px;
+    font-size: 3.0rem;
     background: none;
 
     display: flex;

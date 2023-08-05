@@ -7,10 +7,10 @@ export const Container = styled.div`
     background-color: ${({theme, $isnew}) => $isnew ? "transparent" : theme.COLORS.LIGHT_600};
     color: ${({theme}) => theme.COLORS.LIGHT_100};
 
-    border: ${({theme, $isnew}) => $isnew ? `1px dashed ${theme.COLORS.LIGHT_500}` : "none"};
+    border: ${({theme, $isnew}) => $isnew ? `.1rem dashed ${theme.COLORS.LIGHT_500}` : "none"};
 
-    border-radius: 8px;
-    padding: 2px 16px;
+    border-radius: .8rem;
+    padding: .2rem 1.6rem;
 
     > button {
         border: none;
@@ -26,11 +26,11 @@ export const Container = styled.div`
     }
 
     > input {
-        height: 32px;
+        height: 3.2rem;
         width: 100%;
 
-        padding: 10px 16px;
-        font-size: 16px;
+        padding: 1rem 1.6rem;
+        font-size: 1.6rem;
 
         color: ${({theme}) => theme.COLORS.LIGHT_100};
         background: transparent;

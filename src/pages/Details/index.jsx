@@ -36,7 +36,10 @@ export function DetailsFood(){
                 </div>
             </div>
             
-            <Button type="button">Editar prato</Button>
+            <Button
+                type="button"
+                title="Editar prato"
+            />
 
 
             </C.Content>

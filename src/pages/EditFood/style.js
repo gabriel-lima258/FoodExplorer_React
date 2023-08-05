@@ -6,7 +6,7 @@ export const Container = styled.div`
 
     display: grid;
     
-    grid-template-rows: 114px auto 77px;
+    grid-template-rows: 11.4rem auto 7.7rem;
     grid-template-areas: 
     "header"
     "content"
@@ -18,19 +18,19 @@ export const Container = styled.div`
     overflow-y: auto;
 
     &::-webkit-scrollbar{
-    width: 4px;   
-    border: 1px solid ${({theme}) => theme.COLORS.LIGHT_500};
+    width: .4rem;   
+    border: .1rem solid ${({theme}) => theme.COLORS.LIGHT_500};
     }
     &::-webkit-scrollbar-thumb {
     background: ${({theme}) => theme.COLORS.LIGHT_100};
-    border-radius: 10px;
+    border-radius: 1rem;
     }
 
 `
 
 export const Content = styled.main`
     grid-area: content;
-    margin-top: 10px;
+    margin-top: 1rem;
     width: 100%;
     
 
@@ -45,25 +45,25 @@ export const Content = styled.main`
 export const Form = styled.form`
     width: 100%;
     
-    padding: 16px 32px;
-    margin-bottom: 53px;
+    padding: 1.6rem 3.2rem;
+    margin-bottom: 5.3rem;
 
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 26px;
+    gap: 2.6rem;
 
     .tags {
-        height: 48px;
+        height: 4.8rem;
         display: flex;
         flex-direction: row;
         justify-content: left;
         align-items: center;
-        gap: 16px;
+        gap: 1.6rem;
        
-        padding: 2px 8px;
+        padding: .2rem .8rem;
         background-color: ${({theme}) => theme.COLORS.DARK_800};
-        border-radius: 8px;
+        border-radius: .8rem;
 
         overflow-x: auto;
     }
@@ -71,7 +71,7 @@ export const Form = styled.form`
     .buttons {
         width: 100%;
         display: flex;
-        gap: 32px;
+        gap: 3.2rem;
     }
     
 `

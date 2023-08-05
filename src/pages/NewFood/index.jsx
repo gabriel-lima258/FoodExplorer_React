@@ -72,7 +72,11 @@ export function NewFood(){
                             />
                         </Section>
                         
-                        <Button type="button" add>Salvar alterações</Button>
+                        <Button 
+                        type="button" 
+                        add
+                        title="Salvar alterações"
+                        />
                        
                 </C.Form>
 

@@ -6,7 +6,7 @@ export const Container = styled.div`
 
     display: grid;
     
-    grid-template-rows: 114px auto 77px;
+    grid-template-rows: 11.4rem auto 7.7rem;
     grid-template-areas: 
     "header"
     "content"
@@ -19,39 +19,39 @@ export const Container = styled.div`
 
 export const Content = styled.main`
     grid-area: content;
-    margin: 32px auto;
+    margin: 3.2rem auto;
 
 
     width: 100%;
     height: 100%;
     
-    padding: 11px 56px;
+    padding: 1.1rem 5.6rem;
 
     display: flex;
     flex-direction: column;
     align-items: flex-start;
 
     .button {
-        font-size: 24px;
+        font-size: 2.4rem;
     }
 
     .info {
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 24px;
+        gap: 2.4rem;
 
-        margin-bottom: 48px;
+        margin-bottom: 4.8rem;
 
         img {
-            height: 263px;
-            width: 263px;
+            height: 26.3rem;
+            width: 26.3rem;
         }
 
         h1 {
             color: ${({theme}) => theme.COLORS.LIGHT_300};
             font-family: Poppins;
-            font-size: 27px;
+            font-size: 2.7rem;
             font-weight: 500;
         }
 
@@ -59,7 +59,7 @@ export const Content = styled.main`
             color: ${({theme}) => theme.COLORS.LIGHT_300};
             text-align: center;
             font-family: Poppins;
-            font-size: 16px;
+            font-size: 1.6rem;
             font-weight: 400;
         }
 
@@ -67,7 +67,7 @@ export const Content = styled.main`
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 24px;
+            gap: 2.4rem;
         }
     }
  

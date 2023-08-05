@@ -73,8 +73,17 @@ export function EditFood(){
                         </Section>
                         
                         <div className="buttons">
-                            <Button type="button" exclude>Excluir prato</Button>
-                            <Button type="button" add>Salvar alterações</Button>
+                            <Button
+                                type="button"
+                                title="Encluir prato"
+                                exclude
+                            />
+                            <Button
+                                type="button"
+                                title="Salvar alterações"
+                                add
+                            />
+                          
                         </div>
                        
                 </C.Form>

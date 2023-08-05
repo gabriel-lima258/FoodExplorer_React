@@ -9,30 +9,30 @@ export const Container = styled.div`
     justify-content: space-between;
 
     width: 100%;
-    padding: 24px;
+    padding: 2.4rem;
 
     background-color: ${({theme}) => theme.COLORS.DARK_600};
 
     > span {
         font-family: 'Poppins';
-        font-size: 12px;
-        line-height: 16px;
+        font-size: 1.2rem;
+        line-height: 1.6rem;
     }
 `
 
 export const Brand = styled.div`
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: .8rem;
 
     color: ${({theme}) => theme.COLORS.LIGHT_700};
 
     > svg {
-        width: 20px;
-        height: 20px;
+        width: 2rem;
+        height: 2rem;
     }
 
     > h1 {
-        font-size: 16px;
+        font-size: 1.6rem;
     }
 `

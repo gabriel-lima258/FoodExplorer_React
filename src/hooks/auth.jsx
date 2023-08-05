@@ -64,7 +64,7 @@ function AuthProvider({ children }){
         <AuthContext.Provider value={{
             signIn,
             signOut,
-            user:data.user,
+            user: data.user,
             loading,
             setLoading
             }}  

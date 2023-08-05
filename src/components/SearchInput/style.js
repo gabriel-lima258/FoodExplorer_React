@@ -3,24 +3,24 @@ import styled from 'styled-components';
 export const Container = styled.div`
     
     width: 100%;
-    height: 48px;
-    max-width: 372px;
+    height: 4.8rem;
+    max-width: 37.2rem;
 
-    border-radius: 5px;
-    padding: 12px 14px;
+    border-radius: .5rem;
+    padding: 1.2rem 1.4rem;
 
     display: flex;
     flex-direction: row;
     align-items: center;
 
-    gap: 8px;
+    gap: .8rem;
 
     background-color: ${({theme}) => theme.COLORS.DARK_900};
 
     > input {
         width: 100%;
         
-        font-size: 16px;
+        font-size: 1.6rem;
         
         color: ${({theme}) => theme.COLORS.LIGHT_100};
         background: transparent;
@@ -31,13 +31,13 @@ export const Container = styled.div`
 
         &::placeholder {
             color: ${({theme}) => theme.COLORS.LIGHT_500};
-            font-size: 16px; 
+            font-size: 1.6rem; 
         }
     }
 
     > svg {
-        width: 24px;
-        height: 24px;
+        width: 2.4rem;
+        height: 2.4rem;
         color: ${({theme}) => theme.COLORS.LIGHT_400};
     }
 `
