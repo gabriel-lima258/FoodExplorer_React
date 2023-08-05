@@ -1,3 +1,7 @@
+import { useState } from "react";
+import { useAuth } from "../../hooks/auth";
+import { useNavigate } from "react-router-dom";
+
 import * as C from "./style";
 
 import { Button } from "../../components/Button";
@@ -9,6 +13,21 @@ import Polygon from '../../assets/Polygon.svg'
  
 
 export function SignIn(){
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+
+    const {signIn} = useAuth();
+
+    const navigate = useNavigate();
+
+    function handleSignIn(){
+        signIn({email, password});
+    }
+
+    function handleRegister() {
+        navigate("/register");
+    }
+
     return(
         <C.Container>
             <C.Logo>
@@ -25,6 +44,7 @@ export function SignIn(){
                 label="Email"
                 type="text"
                 placeholder="Exemplo: examplo@email.com.br"
+                onChange={e => setEmail(e.target.value)}
                 />
             </Section>
             
@@ -33,12 +53,20 @@ export function SignIn(){
                 label="Senha"
                 type="password"
                 placeholder="No mínimo 6 caracteres"
+                onChange={e => setPassword(e.target.value)}
                 />
             </Section>
 
-            <Button type="button">Entrar</Button>
+            <Button
+                type="button"
+                title="Entrar"
+                onClick={handleSignIn}
+            />
 
-            <ButtonText title="Criar uma conta"/>
+            <ButtonText 
+                title="Criar uma conta"
+                onClick={handleRegister}
+            />
 
             </C.Form>
         </C.Container>

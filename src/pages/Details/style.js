@@ -6,7 +6,6 @@ export const Container = styled.div`
 
     display: grid;
     
-
     grid-template-rows: 114px auto 77px;
     grid-template-areas: 
     "header"

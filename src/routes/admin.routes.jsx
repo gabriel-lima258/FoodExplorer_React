@@ -8,9 +8,10 @@ export function AdminRoutes(){
     return(
         <Routes>
             
-            <Route path="/details" element={<DetailsFood/>}/>
             <Route path="/new" element={<NewFood/>}/>
-            <Route path="/edit" element={<EditFood/>}/>
+            <Route path="/edit/:id" element={<EditFood/>}/>
+            <Route path="/details/:id" element={<DetailsFood/>}/>
+            
         </Routes>
     );
 }
