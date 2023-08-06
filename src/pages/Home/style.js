@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const Container = styled.div`
     height: 100vh;
     width: 100%;
+    margin-inline: auto;
 
     display: grid;
     
@@ -29,21 +30,18 @@ export const Container = styled.div`
 
 export const Content = styled.main`
     grid-area: content;
+    margin: 0 2rem;
 
-    width: 100vw;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex: 1;
 
 `
 export const Slogan = styled.div`
-    width: 94vw;
     height: 12rem;
-
+   
     margin-top: 4.4rem;
+    margin-bottom: 4.8rem;
 
-    padding-inline: 4rem;
+    padding-inline: 1rem;
 
     display: flex;
     flex-direction: row;
@@ -52,7 +50,7 @@ export const Slogan = styled.div`
     background: ${({theme}) => theme.COLORS.GRADIENTS_200};
 
     > img {
-        margin-bottom: 2rem;
+        margin-bottom: 2.6rem;
     }
 
     > div {

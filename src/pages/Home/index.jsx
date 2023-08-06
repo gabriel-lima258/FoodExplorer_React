@@ -1,8 +1,9 @@
 import * as C from './style';
 
-import { Footer } from '../../components/Footer';
 import { Header } from '../../components/Header';
-import { Section } from '../../components/Section';
+import { SectionCard } from '../../components/SectionCard';
+import { Card } from '../../components/Card';
+import { Footer } from '../../components/Footer';
 
 import Slogan from '../../assets/Slogan_biscoito.svg';
 
@@ -20,10 +21,38 @@ export function Home(){
                     </div>
                 </C.Slogan>
 
-                <Section title="Ingredientes">
+                <SectionCard title="Refeições" whiteColor>
+                 <Card/>
+                 <Card/>
+                 <Card/>
+                 <Card/>
+                 <Card/>
+                 <Card/>
+                
+               
 
+                </SectionCard>
 
-                </Section>
+                <SectionCard title="Pratos principais" whiteColor>
+                 <Card/>
+                 <Card/>
+                 <Card/>
+                 <Card/>
+                 <Card/>
+                 <Card/>
+
+                </SectionCard>
+
+                <SectionCard title="Bebidas" whiteColor>
+                 <Card/>
+                 <Card/>
+                 <Card/>
+                 <Card/>
+                 <Card/>
+                 <Card/>
+
+                </SectionCard>
+
 
             </C.Content>
            <Footer/>
