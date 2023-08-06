@@ -31,8 +31,17 @@ export const Content = styled.main`
     flex-direction: column;
     align-items: flex-start;
 
-    .button {
-        font-size: 2.4rem;
+    .btn-back {
+        display: flex;
+        align-items: center;
+        background: none;
+
+        strong{
+            color: ${({theme}) => theme.COLORS.LIGHT_300};
+            font-family: Poppins;
+            font-size: 2.4rem;
+            font-weight: 500;
+        }
     }
 
     .info {
@@ -70,6 +79,27 @@ export const Content = styled.main`
             gap: 2.4rem;
         }
     }
- 
+
+    > .order {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 1.5rem;
+
+    span {
+      font-size: 2rem;
+      font-weight: 700;
+    }
+
+    .btn {
+      background: none;
+      border: none;
+      color: ${({ theme }) => theme.COLORS.LIGHT_100};
+
+      display: flex;
+      align-items: center;
+    }
+}
 
 `

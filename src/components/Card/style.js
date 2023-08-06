@@ -23,21 +23,16 @@ export const Container = styled.div`
   > button:first-child {
     display: flex;
     position: absolute;
-    top: 1.6rem;
-    right: 1.6rem;
+    top: 1rem;
+    right: 1.4rem;
     
     background: none;
     border: none;
-
-    img {
-        width: 2rem;
-        height: 2rem;
-    }
+    color: ${({ theme }) => theme.COLORS.LIGHT_300};
   }
 
   > div {
     width: 8.8rem;
-    height: 8.8rem;
     img {
       width: 100%;
     }
@@ -63,4 +58,30 @@ export const Container = styled.div`
     color: ${({ theme }) => theme.COLORS.CAKE_200};
 
   }
+
+  > .quantity {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+
+    span {
+      font-size: 2rem;
+      font-weight: 700;
+    }
+
+    .btn {
+      background: none;
+      border: none;
+      color: ${({ theme }) => theme.COLORS.LIGHT_100};
+
+      display: flex;
+      align-items: center;
+    }
+
+
+  }
+
+  
 `

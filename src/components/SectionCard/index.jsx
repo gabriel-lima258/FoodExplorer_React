@@ -9,13 +9,19 @@ export function SectionCard({title, children}){
     function handleLeftClick(e){
         e.preventDefault();
 
-        slider.current.scrollLeft -= slider.current.offSetWidth;
+        slider.current.scrollBy({
+            left: -120,
+            behavior: 'smooth'
+        }) 
     }
 
     function handleRightClick(e){
         e.preventDefault();
 
-        slider.current.scrollLeft += slider.current.offSetWidth;
+        slider.current.scrollBy({
+            left: 120,
+            behavior: 'smooth'
+        }) 
     }
 
     return (

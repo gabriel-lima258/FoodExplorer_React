@@ -3,27 +3,12 @@ import styled from 'styled-components';
 export const Container = styled.section`
   padding-inline: 2rem;
   margin-bottom: 4rem;
-  max-width: 40rem;
+  width: 94vw;
   
   > h2 {
     font-size: 1.8rem
   }
 
-  @media (min-width: 548px) {
-    max-width: 60rem;
-  }
-
-  @media (min-width: 680px) {
-    max-width: 75rem;
-  }
-  @media (min-width: 785px) {
-    padding-inline: 0;
-    max-width: 85rem;
-  }
-  @media (min-width: 910px) {
-    padding-inline: 0;
-    max-width: 121rem;
-  }
 `
 export const Slider = styled.div`
   position: relative;
@@ -82,4 +67,6 @@ export const Slider = styled.div`
         opacity: 1;
       }
     }
+
+  }
 `

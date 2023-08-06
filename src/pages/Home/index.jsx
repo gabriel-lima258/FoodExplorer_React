@@ -1,3 +1,6 @@
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import * as C from './style';
 
 import { Header } from '../../components/Header';
@@ -9,6 +12,11 @@ import Slogan from '../../assets/Slogan_biscoito.svg';
 
 
 export function Home(){
+    const [foods, setFoods] = useState([]);
+    const [search, setSearch] = useState("");
+
+  
+
     return(
         <C.Container>
             <Header/>
@@ -22,6 +30,12 @@ export function Home(){
                 </C.Slogan>
 
                 <SectionCard title="Refeições" whiteColor>
+                 <Card/>
+                 <Card/>
+                 <Card/>
+                 <Card/>
+                 <Card/>
+                 <Card/>
                  <Card/>
                  <Card/>
                  <Card/>

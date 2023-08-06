@@ -1,5 +1,10 @@
+import { useAuth } from "../../hooks/auth";
+import { useNavigate } from "react-router-dom";
+
 import * as C from './style';
+
 import {AiOutlineLeft} from 'react-icons/ai'
+import { FiMinus, FiPlus } from 'react-icons/fi';
 
 import { Header } from '../../components/Header';
 import { Footer } from '../../components/Footer';
@@ -10,14 +15,23 @@ import { IngredientTag } from '../../components/IngredientTag';
 import salada from '../../assets/Mask group.png';
 
 export function DetailsFood(){
+    const {user} = useAuth();
+
+    const navigate = useNavigate();
+
+    function handleBack(){
+        navigate("/");
+    }
+
     return(
         <C.Container>
             <Header/>
             <C.Content>
 
-            <div className="button">
-                <ButtonText title="voltar" icon={AiOutlineLeft}/>
-            </div>
+            <button className="btn-back" onClick={handleBack}>
+                <AiOutlineLeft color="white" size={25}/>
+                <strong>voltar</strong>
+            </button>
 
             <div className="info">
                 <img src={salada} alt="prato de salada" />
@@ -36,10 +50,21 @@ export function DetailsFood(){
                 </div>
             </div>
             
-            <Button
-                type="button"
-                title="Editar prato"
-            />
+            {
+                user.isAdmin?
+                <Button
+                    type="button"
+                    title="Editar prato"
+                />
+                :
+                <div className='order'>
+                    <button className='btn'><FiMinus size={25}/></button>
+                    <span>0</span>
+                    <button className='btn'><FiPlus size={25}/></button>
+                    <Button title="pedir - pix 25.00"/>
+                </div>
+            }
+            
 
 
             </C.Content>
