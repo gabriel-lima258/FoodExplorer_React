@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import * as C from './style';
 
 import { Header } from '../../components/Header';
+import { HeaderDesktop } from '../../components/HeaderDesktop';
 import { SectionCard } from '../../components/SectionCard';
 import { Card } from '../../components/Card';
 import { Footer } from '../../components/Footer';
@@ -20,7 +21,7 @@ export function Home(){
 
     return(
         <C.Container>
-            <Header/>
+            <HeaderDesktop/>
             <C.Content>
                 <C.Slogan>
                     <img src={Slogan} alt="slogan biscoito" />

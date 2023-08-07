@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { Container } from './style';
 
-export function Button({title, exclude = false, add = false, loading = false, ...rest}) {
+export function Button({title, exclude = false, add = false, loading = false, icon: Icon, ...rest}) {
     return(
         <Container
         disabled={loading}
@@ -9,6 +9,7 @@ export function Button({title, exclude = false, add = false, loading = false, ..
         $add={add}
         {...rest}
         >
+          {Icon && <Icon size={25}/>}
           {loading ? 'Carregando' : title}
         </Container>
     )

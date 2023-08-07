@@ -6,7 +6,7 @@ export function ButtonText({title, isActive = false, icon: Icon, ...rest}){
             $isactive={isActive}
             {...rest}
         >
-            {Icon && <Icon/>}
+            {Icon && <Icon size={25}/>}
             {title}
         </Container>
     );
