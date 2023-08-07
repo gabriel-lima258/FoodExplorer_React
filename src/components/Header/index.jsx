@@ -15,11 +15,19 @@ export function Header(){
     const {user, signOut} = useAuth()
     const navigate = useNavigate();
 
+    function handleMenu(){
+        navigate("/menu");
+    }
+
+    function handleOrderFood(){
+        navigate("/order");
+    }
+
     return(
         <C.Container>
                 
-                <C.Logo to="/">
-                    <button>
+                <C.Logo>
+                    <button onClick={handleMenu}>
                         <FiMenu size={25}/>
                     </button>
 
@@ -39,7 +47,10 @@ export function Header(){
                             user.isAdmin ?
                             <></>
                             : 
-                            <PiReceiptBold size={25}/>
+                            <PiReceiptBold 
+                            size={25} 
+                            onClick={handleOrderFood}
+                            />
                         }
                     </button>
                 </C.Logo>

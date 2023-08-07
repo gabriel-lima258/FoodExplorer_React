@@ -16,16 +16,7 @@ export const Container = styled.div`
 
     overflow-x: hidden;
 
-    overflow-y: auto;
-
-    &::-webkit-scrollbar{
-    width: .4rem;   
-    border: .1rem solid ${({theme}) => theme.COLORS.LIGHT_500};
-    }
-    &::-webkit-scrollbar-thumb {
-    background: ${({theme}) => theme.COLORS.LIGHT_100};
-    border-radius: 1rem;
-    }
+    overflow-y: auto; 
 `
 
 export const Content = styled.main`

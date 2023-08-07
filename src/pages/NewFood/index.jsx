@@ -1,3 +1,5 @@
+import { useNavigate } from 'react-router-dom';
+
 import * as C from './style'
 import {AiOutlineLeft, AiOutlineDownload} from 'react-icons/ai'
 import {FiArrowDown} from 'react-icons/fi'
@@ -14,13 +16,20 @@ import { Tags } from '../../components/Tags';
 import { TextArea } from '../../components/TextArea';
 
 export function NewFood(){
+
+    const navigate = useNavigate();
+
+    function handleBack(){
+        navigate("/menu")
+    }
+
     return(
         <C.Container>
             <Header/>
             <C.Content>
                 <C.Form>
                     
-                <ButtonText title="voltar" icon={AiOutlineLeft}/>
+                <ButtonText title="voltar" icon={AiOutlineLeft} onClick={handleBack}/>
 
                     <h1>Novo Prato</h1>
 

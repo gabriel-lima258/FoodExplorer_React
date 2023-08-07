@@ -12,18 +12,16 @@ export default createGlobalStyle`
     }
 
     body, body * {
-    ::-webkit-scrollbar {
-      width: 8px;
-    }
 
-    ::-webkit-scrollbar-track {
-      border-radius: 10px;
-    }
-
-    ::-webkit-scrollbar-thumb {
-      background-color: ${({ theme }) => theme.COLORS.GRAY_200};
-      border-radius: 8px;
-    }
+        &::-webkit-scrollbar{
+            height: .1rem;
+            width: .2rem;   
+            border: .1rem solid ${({theme}) => theme.COLORS.LIGHT_500};
+        }
+        &::-webkit-scrollbar-thumb {
+            background: ${({theme}) => theme.COLORS.LIGHT_100};
+            border-radius: 1rem;
+        }
     }
 
     body {

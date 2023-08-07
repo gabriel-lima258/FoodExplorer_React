@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const Container = styled.header`
@@ -16,7 +15,7 @@ export const Container = styled.header`
     transition: ease 0.3s;
 `
 
-export const Logo = styled(Link)`
+export const Logo = styled.nav`
     width: 100%;
     display: flex;
     align-items: center;
@@ -46,7 +45,6 @@ export const Logo = styled(Link)`
         h1 {
         font-size: 2.1rem;
         font-weight: 700;
-        color: ${({theme}) => theme.COLORS.LIGHT_100};
         }
 
         span {
@@ -55,16 +53,4 @@ export const Logo = styled(Link)`
         }
 
     }
-`
-
-export const IconButton = styled.button`
-    font-size: 3.0rem;
-    background: none;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    color: ${({theme}) => theme.COLORS.LIGHT_100};
-
 `

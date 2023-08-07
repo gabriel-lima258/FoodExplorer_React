@@ -23,6 +23,11 @@ export function DetailsFood(){
         navigate("/");
     }
 
+    function handleEditFood(){
+        navigate("/edit/1");
+    }
+
+
     return(
         <C.Container>
             <Header/>
@@ -55,6 +60,7 @@ export function DetailsFood(){
                 <Button
                     type="button"
                     title="Editar prato"
+                    onClick={handleEditFood}
                 />
                 :
                 <div className='order'>

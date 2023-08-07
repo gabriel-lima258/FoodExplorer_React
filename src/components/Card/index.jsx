@@ -21,7 +21,11 @@ export function Card({data, ...rest}){
 
     const navigate = useNavigate();
 
-    function handleBack(){
+    function handleEditFood(){
+        navigate("/edit/1");
+    }
+
+    function handleDetailsFood(){
         navigate("/details/1");
     }
 
@@ -33,7 +37,7 @@ export function Card({data, ...rest}){
             <button>
                 {
                     user.isAdmin ?
-                    <PiPencilLineLight color='white' size={30}/>
+                    <PiPencilLineLight color='white' size={30} onClick={handleEditFood}/>
                     :
                     <AiOutlineHeart color='white' size={30}/>
                 }
@@ -43,7 +47,7 @@ export function Card({data, ...rest}){
                 <img src={image} alt="teste" />
             </div>
 
-            <a type='button' onClick={handleBack}>
+            <a type='button' onClick={handleDetailsFood}>
                 <h3>salada <FaAngleRight/></h3>
             </a>
 
