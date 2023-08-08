@@ -18,8 +18,7 @@ export const Container = styled.div`
 
 export const Content = styled.main`
     grid-area: content;
-    margin: 3.2rem auto;
-
+    margin: 8rem auto;
 
     width: 100%;
     height: 100%;
@@ -28,12 +27,22 @@ export const Content = styled.main`
 
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
+  
+
+    img {
+        height: 26.3rem;
+        width: 26.3rem;
+    }
 
     .btn-back {
+        position: absolute;
+        left: 3rem;
+        top: 13rem;
+        background: none;
+
         display: flex;
         align-items: center;
-        background: none;
 
         strong{
             color: ${({theme}) => theme.COLORS.LIGHT_300};
@@ -51,10 +60,6 @@ export const Content = styled.main`
 
         margin-bottom: 4.8rem;
 
-        img {
-            height: 26.3rem;
-            width: 26.3rem;
-        }
 
         h1 {
             color: ${({theme}) => theme.COLORS.LIGHT_300};
@@ -73,32 +78,73 @@ export const Content = styled.main`
 
         > .tags {
             display: flex;
-            flex-wrap: wrap;
             justify-content: center;
+            flex-wrap: wrap;
             gap: 2.4rem;
         }
-    }
 
-    > .order {
+        > .order {
         width: 100%;
         display: flex;
         flex-direction: row;
         align-items: center;
         gap: 1.5rem;
 
-    span {
-      font-size: 2rem;
-      font-weight: 700;
+            span {
+            font-size: 2rem;
+            font-weight: 700;
+            }
+
+            .btn {
+            background: none;
+            border: none;
+            color: ${({ theme }) => theme.COLORS.LIGHT_100};
+
+            display: flex;
+            align-items: center;
+            }
+        }
     }
 
-    .btn {
-      background: none;
-      border: none;
-      color: ${({ theme }) => theme.COLORS.LIGHT_100};
+    @media(min-width: 1024px){
+        margin: 2rem auto;
+        flex-direction: row;
+        gap: 6rem;
 
-      display: flex;
-      align-items: center;
+        img {
+        height: 39rem;
+        width: 39rem;
+        }
+
+        .order {
+            margin-top: 3rem;
+        }
+
+        .info {
+            align-items: flex-start;
+
+            h1 {
+                font-size: 4rem;
+            }
+            p {
+                font-size: 2.4rem;
+                text-align: start;
+            }
+
+            .tags {
+                gap: 1rem .2rem;
+                justify-content: start;
+            }
+
+            .btn-edit {
+                width: 16rem;
+            }
+        }
+
+
     }
-}
 
+
+
+    
 `

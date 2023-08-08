@@ -44,8 +44,13 @@ export function DetailsFood(){
                 <strong>voltar</strong>
             </button>
 
+            <div className="page">
+                
+            </div>
+
+            <img src={salada} alt="prato de salada" />
+
             <div className="info">
-                <img src={salada} alt="prato de salada" />
                 <h1>Salada Ravanello</h1>
                 <p>Rabanetes, folhas verdes e molho agridoce salpicados com gergelim.</p>
 
@@ -57,13 +62,13 @@ export function DetailsFood(){
                 <IngredientTag title="alface"/>
                 <IngredientTag title="alface"/>
                 <IngredientTag title="alface"/>
-                
+
                 </div>
-            </div>
-            
-            {
+
+                {
                 user.isAdmin?
                 <Button
+                    className= "btn-edit"
                     type="button"
                     title="Editar prato"
                     onClick={handleEditFood}
@@ -77,6 +82,11 @@ export function DetailsFood(){
                 </div>
             }
             
+                
+                
+            </div>
+            
+           
 
 
             </C.Content>
