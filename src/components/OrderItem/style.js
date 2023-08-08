@@ -10,8 +10,8 @@ export const Container = styled.div`
   > div {
 
     img {
-      width: 7.2rem;
-      height: 7.2rem;
+      width: 10rem;
+      height: 10rem;
       border-radius: 50%;
 
       object-fit: cover;
@@ -38,10 +38,8 @@ export const Content = styled.div`
 
   > button {
     margin-top: 1rem;
-    border: none;
-    background: transparent;
-    color: #da505d;
     font-size: 1.2rem;
+    color: ${({ theme }) => theme.COLORS.TOMATO_400};
 
     &:disabled {
       opacity: 0.5;

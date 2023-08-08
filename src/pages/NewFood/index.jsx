@@ -35,11 +35,18 @@ export function NewFood(){
             <C.Content>
                 <C.Form>
                     
-                <ButtonText title="Voltar" icon={AiOutlineLeft} onClick={handleBack}/>
+                <ButtonText 
+                title="Voltar" 
+                icon={AiOutlineLeft} 
+                onClick={handleBack}
+                className="btn-back"
+                />
 
                     <h1>Novo Prato</h1>
 
-                        <Section title="Imagem do prato">
+                    <C.InputWrapper>
+
+                    <Section title="Imagem do prato">
                             <InputFile
                             type="file"
                             icon={AiOutlineDownload}
@@ -61,8 +68,14 @@ export function NewFood(){
                             />
                         </Section>
 
-                        <Section title="Ingredientes">
-                            <div className="tags">
+
+                    </C.InputWrapper>
+                    
+                    <C.InputWrapper>
+
+                    <Section title="Ingredientes">
+
+                        <div className="tags">
                             <Tags
                             value="Pão"
                             placeholder="Adicionar"
@@ -71,7 +84,8 @@ export function NewFood(){
                             isnew
                             placeholder="Adicionar"
                             />
-                            </div>
+                        </div>
+                          
                         </Section>
 
                         <Section title="Preço">
@@ -80,6 +94,10 @@ export function NewFood(){
                             type="text"
                             />
                         </Section>
+                        
+                    </C.InputWrapper>
+                        
+                    <C.InputWrapper>
 
                         <Section title="Descrição">
                             <TextArea
@@ -87,12 +105,15 @@ export function NewFood(){
                             />
                         </Section>
                         
+                    </C.InputWrapper>
+
                         <Button 
                         type="button" 
                         add
                         title="Salvar alterações"
+                        className="btn-save"
                         />
-                       
+                         
                 </C.Form>
 
             </C.Content>

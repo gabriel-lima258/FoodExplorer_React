@@ -1,10 +1,14 @@
 import * as C from './style'
 
+import { ButtonText } from '../ButtonText'
+
 import image from '../../assets/Mask group-2.png'
 
-export function OrderItem({data}){
+export function OrderItem({data, favorite = false}){
     return(
-        <C.Container>
+        <C.Container
+        $favorite={favorite}
+        >
             <div>
                 <img src={image} alt="iamge" />
             </div>
@@ -13,9 +17,10 @@ export function OrderItem({data}){
                     <span>2 X Salada Grega</span>
                     <strong>R$ 10.00</strong>
                 </div>
-                <button>
-                    Excluir pedido
-                </button>
+
+                <ButtonText
+                    title="Excluir pedido"
+                />
             </C.Content>
         </C.Container>
     )

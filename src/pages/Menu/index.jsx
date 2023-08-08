@@ -52,14 +52,12 @@ export function Menu(){
                             Novo Prato
                         </button>
                         :
-                        <button onClick={handleNewFood}>
+                        <button>
                             Meus favoritos
                         </button>
                     }
                     <button onClick={handleSignOut}>Sair</button>
                 </div>
-
-
 
                 </C.Content>
 

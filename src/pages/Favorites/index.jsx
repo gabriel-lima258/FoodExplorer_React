@@ -4,17 +4,13 @@ import { useMediaQuery } from 'react-responsive';
 
 import * as C from './style'
 
-import {AiOutlineClose} from 'react-icons/ai';
-import {BsSearch} from 'react-icons/bs';
-
-import { Input } from '../../components/Input';
 import { OrderItem } from '../../components/OrderItem';
 import { Footer } from '../../components/Footer'
 import { Header } from '../../components/Header';
 import { HeaderDesktop } from "../../components/HeaderDesktop";
 import { Button } from '../../components/Button';
 
-export function Order(){
+export function Favorite(){
 
     const {user, signOut} = useAuth()
     const navigate = useNavigate();
@@ -39,7 +35,7 @@ export function Order(){
 
                 <C.Content>
                     <C.Orders>
-                        <h3>Meu Pedido</h3>
+                        <h3>Meus favoritos</h3>
 
                         <div className="session-orders">
                             <OrderItem/>
@@ -47,16 +43,6 @@ export function Order(){
                             <OrderItem/>
                         </div>
 
-                        <div className="total">
-                            <p>Total R$ <span>30.00</span></p>
-                        </div>
-
-            
-                            <Button 
-                            title="Avançar"
-                            className="btn-payment"
-                            />  
-                        
                     </C.Orders>
                     
 

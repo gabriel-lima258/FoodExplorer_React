@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const Container = styled.header`
@@ -15,7 +16,7 @@ export const Container = styled.header`
     transition: ease 0.3s;
 `
 
-export const Logo = styled.nav`
+export const Nav = styled.nav`
     width: 100%;
     display: flex;
     align-items: center;
@@ -31,26 +32,29 @@ export const Logo = styled.nav`
 
         color: ${({theme}) => theme.COLORS.LIGHT_100};
     }
-
-    > .logo {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-
-        img {
-        height: 2.4rem;
-        width: 2.4rem;
-        }
-
-        h1 {
-        font-size: 2.1rem;
-        font-weight: 700;
-        }
-
-        span {
-        font-size: 1.2rem;
-        color: ${({theme}) => theme.COLORS.CAKE_200};
-        }
-
-    }
 `
+
+export const Logo = styled(Link)`
+    display: flex;
+    align-items: center;
+    gap: 1.1rem;
+
+    color: ${({ theme }) => theme.COLORS.LIGHT_100};
+
+    img {
+    height: 3rem;
+    width: 3rem;
+    }
+
+    h1 {
+    font-size: 2.4rem;
+    font-weight: 700;
+    }
+        
+    span {
+    font-size: 1.2rem;
+    color: ${({theme}) => theme.COLORS.CAKE_200};
+    }
+
+`
+

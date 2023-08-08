@@ -29,11 +29,15 @@ export function HeaderDesktop(){
         navigate("/order");
     }
 
+    function handleNewFood(){
+        navigate("/new");
+    }
+
     return(
         <C.Container>
                 
-                <C.Logo>
-                    <div className="logo">
+                <C.Nav>
+                    <C.Logo to="/">
                         <img src={Polygon} alt="Poligono logo"/>
                         {
                             user.isAdmin ?
@@ -43,7 +47,7 @@ export function HeaderDesktop(){
                             :
                             <h1>food explorer</h1>
                         }
-                    </div>
+                    </C.Logo>
 
 
                     <Input
@@ -52,10 +56,13 @@ export function HeaderDesktop(){
                         icon={BsSearch}
                     />
 
+                    <ButtonText title="Meus favoritos"/>
+
                         {
                             user.isAdmin ?
                             <Button
                                 title="Novo prato"
+                                onClick={handleNewFood}
                             />
                             : 
                             <Button 
@@ -71,7 +78,7 @@ export function HeaderDesktop(){
                             icon={FiLogOut}
                             onClick={handleSignOut}
                         />
-                </C.Logo>
+                </C.Nav>
 
         </C.Container>
     );

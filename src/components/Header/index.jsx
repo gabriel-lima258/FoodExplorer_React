@@ -26,12 +26,12 @@ export function Header(){
     return(
         <C.Container>
                 
-                <C.Logo>
+                <C.Nav>
                     <button onClick={handleMenu}>
                         <FiMenu size={25}/>
                     </button>
 
-                    <div className="logo">
+                    <C.Logo to="/">
                         <img src={Polygon} alt="Poligono logo"/>
                         <h1>food explorer</h1>
                         {
@@ -40,7 +40,7 @@ export function Header(){
                             :
                             <></>
                         }
-                    </div>
+                    </C.Logo>
 
                     <button>
                         {
@@ -53,7 +53,7 @@ export function Header(){
                             />
                         }
                     </button>
-                </C.Logo>
+                </C.Nav>
 
         </C.Container>
     );

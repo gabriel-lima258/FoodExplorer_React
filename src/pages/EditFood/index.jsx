@@ -34,61 +34,81 @@ export function EditFood(){
             {isMobile ? <Header/> : <HeaderDesktop/>}
 
             <C.Content>
-                <C.Form>
+            <C.Form>
                     
-                <ButtonText title="Voltar" icon={AiOutlineLeft} onClick={handleBack}/>
-
-                    <h1>Editar Prato</h1>
-
+                    <ButtonText 
+                    title="Voltar" 
+                    icon={AiOutlineLeft} 
+                    onClick={handleBack}
+                    className="btn-back"
+                    />
+    
+                        <h1>Editar prato</h1>
+    
+                        <C.InputWrapper>
+    
                         <Section title="Imagem do prato">
-                            <InputFile
-                            type="file"
-                            icon={AiOutlineDownload}
-                            label="Selecione imagem para alterá-la"
-                            />
-                        </Section>
-
-                        <Section title="Nome">
-                            <Input
-                            placeholder="Salada César"
-                            type="text"
-                            />
-                        </Section>
+                                <InputFile
+                                type="file"
+                                icon={AiOutlineDownload}
+                                label="Selecione imagem"
+                                />
+                            </Section>
+    
+                            <Section title="Nome">
+                                <Input
+                                placeholder="Salada"
+                                type="text"
+                                />
+                            </Section>
+                            
+                            <Section title="Categoria">
+                                <Select
+                                option="Selecionar"
+                                icon={FiArrowDown}
+                                />
+                            </Section>
+    
+    
+                        </C.InputWrapper>
                         
-                        <Section title="Categoria">
-                            <Select
-                            option="Selecionar"
-                            icon={FiArrowDown}
-                            />
-                        </Section>
-
+                        <C.InputWrapper>
+    
                         <Section title="Ingredientes">
+    
                             <div className="tags">
-                            <Tags
-                            value="Pão"
-                            placeholder="Adicionar"
-                            />
-                            <Tags
-                            isnew
-                            placeholder="Adicionar"
-                            />
+                                <Tags
+                                value="Pão"
+                                placeholder="Adicionar"
+                                />
+                                <Tags
+                                isnew
+                                placeholder="Adicionar"
+                                />
                             </div>
-                        </Section>
-
-                        <Section title="Preço">
-                            <Input
-                            placeholder="R$ 10.00"
-                            type="text"
-                            />
-                        </Section>
-
-                        <Section title="Descrição">
-                            <TextArea
-                            placeholder="A Salada César é uma opção refrescante para o verão."
-                            />
-                        </Section>
+                              
+                            </Section>
+    
+                            <Section title="Preço">
+                                <Input
+                                placeholder="R$ 10.00"
+                                type="text"
+                                />
+                            </Section>
+                            
+                        </C.InputWrapper>
+                            
+                        <C.InputWrapper>
+    
+                            <Section title="Descrição">
+                                <TextArea
+                                placeholder="Fale brevemente sobre o prato, seus ingredientes e composição"
+                                />
+                            </Section>
+                            
+                        </C.InputWrapper>
                         
-                        <div className="buttons">
+                        <div className="btn-edit">
                             <Button
                                 type="button"
                                 title="Encluir prato"
@@ -98,12 +118,11 @@ export function EditFood(){
                                 type="button"
                                 title="Salvar alterações"
                                 add
-                            />
-                          
+                            /> 
                         </div>
-                       
-                </C.Form>
-
+                            
+                    </C.Form>
+                        
             </C.Content>
             <Footer/>
             

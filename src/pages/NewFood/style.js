@@ -28,7 +28,6 @@ export const Content = styled.main`
     align-items: flex-start;
     justify-content: center;
   
-   
 `
 
 export const Form = styled.form`
@@ -42,6 +41,33 @@ export const Form = styled.form`
     align-items: flex-start;
     gap: 2.6rem;
 
+    h1 {
+        color: ${({theme}) => theme.COLORS.LIGHT_300};
+        font-family: Poppins, sans-serif;
+        font-size: 3.2rem;
+        font-weight: 500;
+    }
+
+    .btn-back{
+        @media (min-width: 768px) {
+            font-size: 2.4rem;
+        }
+    }
+
+    .btn-save {
+        @media (min-width: 768px) {
+            width: 17rem;
+            align-self: flex-end;
+        }
+    }
+`
+
+export const InputWrapper = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4rem;
+    width: 100%;
+
     .tags {
         height: 4.8rem;
         display: flex;
@@ -54,5 +80,9 @@ export const Form = styled.form`
         background-color: ${({theme}) => theme.COLORS.DARK_800};
         border-radius: .8rem;
     }
-    
+
+    @media (min-width: 768px) {
+    flex-wrap: nowrap;
+    column-gap: 3.2rem;
+    }
 `
