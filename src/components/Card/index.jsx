@@ -31,9 +31,7 @@ export function Card({data, ...rest}){
 
 
     return(
-        <Container>
-          
-           
+        <Container>  
             <button>
                 {
                     user.isAdmin ?
@@ -43,34 +41,30 @@ export function Card({data, ...rest}){
                 }
             </button>
            
-            <div>
+            <div className='img'>
                 <img src={image} alt="teste" />
             </div>
 
-            <a type='button' onClick={handleDetailsFood}>
+            <a type='button' onClick={handleDetailsFood} className='title'>
                 <h3>salada <FaAngleRight/></h3>
             </a>
+
+            <p>Presunto de parma e rúcula em um pão com fermentação natural.</p>
 
             <strong>R$ 10.21</strong>
 
             {
                 user.isAdmin ?
                 <></>  
-        
                 :
                 <div className='quantity'>
                     <button className='btn'><FiMinus size={25}/></button>
                     <span>0</span>
                     <button className='btn'><FiPlus size={25}/></button>
+                    <Button title="incluir"/>
                 </div>
             }
 
-            {
-                user.isAdmin ?
-                <></>
-                :
-                <Button title="incluir"/>
-            }
 
 
         </Container>

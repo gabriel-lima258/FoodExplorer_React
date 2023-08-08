@@ -1,5 +1,6 @@
 import { useAuth } from "../../hooks/auth";
 import { useNavigate } from "react-router-dom";
+import { useMediaQuery } from 'react-responsive';
 
 import * as C from './style';
 
@@ -11,6 +12,7 @@ import { Footer } from '../../components/Footer';
 import { Button } from '../../components/Button';
 import { ButtonText } from '../../components/ButtonText';
 import { IngredientTag } from '../../components/IngredientTag';
+import { HeaderDesktop } from "../../components/HeaderDesktop";
 
 import salada from '../../assets/Mask group.png';
 
@@ -18,6 +20,8 @@ export function DetailsFood(){
     const {user} = useAuth();
 
     const navigate = useNavigate();
+
+    const isMobile = useMediaQuery({ maxWidth: 1023})
 
     function handleBack(){
         navigate("/");
@@ -30,7 +34,9 @@ export function DetailsFood(){
 
     return(
         <C.Container>
-            <Header/>
+
+            {isMobile ? <Header/> : <HeaderDesktop/>}
+
             <C.Content>
 
             <button className="btn-back" onClick={handleBack}>

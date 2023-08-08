@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useMediaQuery } from 'react-responsive';
 
 import * as C from './style';
 
@@ -16,12 +17,14 @@ export function Home(){
     const [foods, setFoods] = useState([]);
     const [search, setSearch] = useState("");
 
-    
+    const isMobile = useMediaQuery({ maxWidth: 1023})
   
 
     return(
         <C.Container>
-            <HeaderDesktop/>
+            
+            {isMobile ? <Header/> : <HeaderDesktop/>}
+
             <C.Content>
                 <C.Slogan>
                     <img src={Slogan} alt="slogan biscoito" />
@@ -71,7 +74,8 @@ export function Home(){
 
 
             </C.Content>
-           <Footer/>
+            
+            <Footer/>         
 
         </C.Container>
     );

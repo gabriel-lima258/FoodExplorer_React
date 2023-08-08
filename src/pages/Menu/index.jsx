@@ -14,6 +14,7 @@ export function Menu(){
     const {user, signOut} = useAuth()
     const navigate = useNavigate();
 
+
     function handleHome(){
         navigate("/");
     }

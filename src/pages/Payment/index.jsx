@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from "../../hooks/auth";
+import { useMediaQuery } from 'react-responsive';
 
 import * as C from './style'
 
@@ -10,12 +11,15 @@ import { Input } from '../../components/Input';
 import { OrderItem } from '../../components/OrderItem';
 import { Footer } from '../../components/Footer'
 import { Header } from '../../components/Header';
+import { HeaderDesktop } from "../../components/HeaderDesktop";
 import { Button } from '../../components/Button';
 
 export function Order(){
 
     const {user, signOut} = useAuth()
     const navigate = useNavigate();
+
+    const isMobile = useMediaQuery({ maxWidth: 1023})
 
     function handleHome(){
         navigate("/");
@@ -30,7 +34,9 @@ export function Order(){
 
     return(
         <C.Container>
-            <Header/>
+
+            {isMobile ? <Header/> : <HeaderDesktop/>}
+
                 <C.Content>
                     <C.Orders>
                         <h3>Pedidos</h3>

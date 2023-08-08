@@ -1,10 +1,12 @@
 import { useNavigate } from 'react-router-dom';
+import { useMediaQuery } from 'react-responsive';
 
 import * as C from './style'
 import {AiOutlineLeft, AiOutlineDownload} from 'react-icons/ai'
 import {FiArrowDown} from 'react-icons/fi'
 
 import { Header } from '../../components/Header';
+import { HeaderDesktop } from "../../components/HeaderDesktop";
 import { Button } from '../../components/Button';
 import { ButtonText } from '../../components/ButtonText';
 import { Input } from '../../components/Input';
@@ -19,6 +21,8 @@ export function EditFood(){
 
     const navigate = useNavigate();
 
+    const isMobile = useMediaQuery({ maxWidth: 1023})
+
     function handleBack(){
         navigate("/");
     }
@@ -26,11 +30,13 @@ export function EditFood(){
 
     return(
         <C.Container>
-            <Header/>
+
+            {isMobile ? <Header/> : <HeaderDesktop/>}
+
             <C.Content>
                 <C.Form>
                     
-                <ButtonText title="voltar" icon={AiOutlineLeft} onClick={handleBack}/>
+                <ButtonText title="Voltar" icon={AiOutlineLeft} onClick={handleBack}/>
 
                     <h1>Editar Prato</h1>
 

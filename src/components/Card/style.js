@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-    width: 21rem;
+    width: 23rem;
 
     margin: 2rem 0;
     padding: 2.4rem;
@@ -20,6 +20,11 @@ export const Container = styled.div`
 
     flex: none;
 
+    @media(min-width: 1024px){
+        width: 30rem;
+    }
+    
+
   > button:first-child {
     display: flex;
     position: absolute;
@@ -31,14 +36,19 @@ export const Container = styled.div`
     color: ${({ theme }) => theme.COLORS.LIGHT_300};
   }
 
-  > div {
+  .img {
     width: 8.8rem;
+
+    @media(min-width: 1024px){
+        width: 17rem;
+    }
+    
     img {
       width: 100%;
     }
   }
 
-  > a {
+  .title {
 
     h3 {
     font-family: Poppins, sans-serif;
@@ -49,22 +59,43 @@ export const Container = styled.div`
 
     display: flex;
     align-items: center;
+
+    @media(min-width: 1024px){
+        font-size: 2.4rem;
+    }
     }
   }
+
+  > p {
+    text-align: center;
+    font-size: 1.4rem;
+
+    color: ${({ theme }) => theme.COLORS.LIGHT_400};
+  }
+
 
   > strong {
     font-size: 1.6rem;
     font-weight: 400;
     color: ${({ theme }) => theme.COLORS.CAKE_200};
 
+    @media(min-width: 1024px){
+        font-size: 3.2rem;
+    }
+
   }
 
-  > .quantity {
+  .quantity {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    gap: 1.5rem;
+    gap: 1.2rem;
+
+    @media(min-width: 1024px){
+      width: 90%;   
+    }
+  
 
     span {
       font-size: 2rem;
@@ -78,7 +109,10 @@ export const Container = styled.div`
 
       display: flex;
       align-items: center;
+
     }
+
+   
 
 
   }

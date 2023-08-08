@@ -26,9 +26,9 @@ export function SectionCard({title, children}){
 
     return (
         <Container>
+            <Slider>
             <h2>{title}</h2>
 
-            <Slider>
                 <button
                     className="button-left"
                     onClick={handleLeftClick}

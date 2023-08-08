@@ -3,16 +3,35 @@ import styled from 'styled-components';
 export const Container = styled.section`
   padding-inline: 2rem;
   margin-bottom: 4rem;
-  width: 94vw;
-  
-  > h2 {
-    font-size: 1.8rem
-  }
+  width: 100vw;
+
+  position: relative;
+  margin: 0 auto;
+  max-width: 36rem;
+
+    @media (max-width: 768px) {
+      max-width: 58rem;
+    }
+
+    @media (min-width: 768px) {
+      max-width: 75rem;
+    }
+
+    @media (min-width: 1024px) {
+      max-width: 90rem;
+    }
+
+    @media (min-width: 1300px) {
+      max-width: 123rem;
+    }
 
 `
 export const Slider = styled.div`
-  position: relative;
 
+  h2 {
+    font-size: 1.8rem;
+    color: ${({ theme }) => theme.COLORS.LIGHT_300};
+  }
 
   > div {
     display: flex;
@@ -28,10 +47,11 @@ export const Slider = styled.div`
   .button-left, .button-right {
     position: absolute;
     z-index: 5;
-
+    
     padding-inline: .1rem;
-
+    
     color: ${({ theme }) => theme.COLORS.LIGHT_100};
+    filter: opacity(0.7);
     
   }
 
@@ -69,4 +89,11 @@ export const Slider = styled.div`
     }
 
   }
+
+  @media (min-width: 1024px) {
+     h2{
+      font-size: 3rem;
+     }
+  }
+
 `
