@@ -10,7 +10,7 @@ export function SectionCard({title, children}){
         e.preventDefault();
 
         slider.current.scrollBy({
-            left: -120,
+            left: -420,
             behavior: 'smooth'
         }) 
     }
@@ -19,7 +19,7 @@ export function SectionCard({title, children}){
         e.preventDefault();
 
         slider.current.scrollBy({
-            left: 120,
+            left: 420,
             behavior: 'smooth'
         }) 
     }

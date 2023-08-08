@@ -54,13 +54,13 @@ export function SignUp(){
     return(
         <C.Container>
             <C.Logo>
-                <div className="Logo">
-                    <img src={Polygon} alt="Poligono logo"/>
-                    <h1>food explorer</h1>
-                </div>
+                <img src={Polygon} alt="Poligono logo"/>
+                <h1>food explorer</h1>
             </C.Logo>
 
             <C.Form>
+
+            <h1>Crie sua conta</h1>
             
             <Section title="Nome">
                 <Input
