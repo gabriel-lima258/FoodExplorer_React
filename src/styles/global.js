@@ -33,7 +33,7 @@ export default createGlobalStyle`
         -webkit-font-smoothing: antialiased;
     }
 
-    select, button, textarea {
+    input, select, button, textarea {
         font-family: 'Poppins', sans-serif;
         
         font-size: 16px;

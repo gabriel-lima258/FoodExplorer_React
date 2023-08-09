@@ -1,5 +1,8 @@
+import { useState } from 'react';
+
 import { useNavigate } from 'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
+import { toast } from 'react-toastify';
 
 import * as C from './style'
 import {AiOutlineLeft, AiOutlineDownload} from 'react-icons/ai'
@@ -16,16 +19,80 @@ import { Select } from '../../components/Select';
 import { Section } from '../../components/Section';
 import { Tags } from '../../components/Tags';
 import { TextArea } from '../../components/TextArea';
+import { api } from '../../services/api';
 
 export function NewFood(){
+    const [title, setTitle] = useState(""); // valor inicial
+    const [description, setDescription] = useState("");
+    const [category, setCategory] = useState("");
+    const [price, setPrice] = useState("");
+    const [image, setImage] = useState(null);
+
+    const [ingredients, setIngredients] = useState([]); // vetores de valores
+    const [newIngredient, setNewIngredient] = useState("");
+
+    const [loading, setLoading] = useState(false);
 
     const navigate = useNavigate();
 
-    const isMobile = useMediaQuery({ maxWidth: 1023})
+    const isMobile = useMediaQuery({ maxWidth: 1023});
 
     function handleBack(){
         navigate("/menu")
     }
+
+    // função para pegar valores anteriores e adicionar novo valor
+    function handleAddIngredient(){
+        setIngredients(prevState => [...prevState, newIngredient])
+        setNewIngredient(""); // reseta o próximo valor
+    }
+
+    function handleRemoveIngredient(deleted){ //funcionalidade para remover tag, recebe como parâmetro o tag que deseja remover
+        setIngredients(prevState => prevState.filter(ingredient => ingredient !== deleted));
+        //filtrando na lista de tags atual (atual = prevState) a partir do tag que quero deletar, refazer a lista com todos os itens que são diferentes do tag que estou deletando
+    }   
+
+    async function handleNewFood(){
+
+    const formData = new FormData();
+
+    if (!title){
+        return toast.error("Você precisa inserir o nome do prato, por favor digite novamente.", {
+            position: toast.POSITION.TOP_RIGHT
+        });
+    }
+
+    // Form data pega um conjunto de valores referidos e o append insere um valor caso exista ou não um valor
+
+    formData.append("avatarFood", image); // primeiro valor da tabela do DB e o segundo do useState
+    formData.append("title", title);
+    formData.append("description", description);
+    formData.append("category", category);
+    formData.append("price", price);
+
+    const ingredientsNames = ingredients.map(item => item.name);
+
+    formData.append("ingredients", ingredientsNames)
+
+    try {
+        setLoading(true);
+        await api.post("/foods", formData);
+        toast.success("Prato adicionado com sucesso!", {
+            position: toast.POSITION.TOP_CENTER
+        });
+
+        navigate("/");
+
+        setLoading(false);
+
+    } catch (error){
+        setLoading(false);
+        error.response ? error.response.data.message : "Não foi possível cadastrar este filme..."
+        toast.error("Não foi possível cadastrar o prato!", {
+            position: toast.POSITION.TOP_CENTER
+        });
+    }
+}
 
     return(
         <C.Container>
@@ -51,6 +118,7 @@ export function NewFood(){
                             type="file"
                             icon={AiOutlineDownload}
                             label="Selecione imagem"
+                            onChange={e => setImage(e.target.files[0])}
                             />
                         </Section>
 
@@ -58,13 +126,14 @@ export function NewFood(){
                             <Input
                             placeholder="Salada"
                             type="text"
+                            onChange={e => setTitle(e.target.value)}
                             />
                         </Section>
                         
                         <Section title="Categoria">
                             <Select
-                            option="Selecionar"
                             icon={FiArrowDown}
+                            onChange={e => setCategory(e.target.value)}
                             />
                         </Section>
 
@@ -76,13 +145,23 @@ export function NewFood(){
                     <Section title="Ingredientes">
 
                         <div className="tags">
-                            <Tags
-                            value="Pão"
-                            placeholder="Adicionar"
-                            />
+                            {
+                                // percorre o vetor ingredientes, index consede um id para cada
+                                ingredients.map((ingredient, index) => (
+                                    <Tags
+                                    key={String(index)}
+                                    value={ingredient} // recebe um valor já adicionado
+                                    onClick={() => handleRemoveIngredient(ingredient)}
+                                    />
+                                ))
+                            }
+                            
                             <Tags
                             isnew
                             placeholder="Adicionar"
+                            value={newIngredient} // recebe novo valor
+                            onChange={e => setNewIngredient(e.target.value)}
+                            onClick={handleAddIngredient}
                             />
                         </div>
                           
@@ -92,6 +171,7 @@ export function NewFood(){
                             <Input
                             placeholder="R$ 10.00"
                             type="text"
+                            onChange={e => setPrice(e.target.value)}
                             />
                         </Section>
                         
@@ -102,17 +182,21 @@ export function NewFood(){
                         <Section title="Descrição">
                             <TextArea
                             placeholder="Fale brevemente sobre o prato, seus ingredientes e composição"
+                            onChange={e => setDescription(e.target.value)}
                             />
                         </Section>
                         
                     </C.InputWrapper>
 
-                        <Button 
+                        <Button
                         type="button" 
                         add
                         title="Salvar alterações"
                         className="btn-save"
-                        />
+                        onClick={handleNewFood}
+                        >
+                            {loading ? "Adicionando prato" : "Salvar alterações"}
+                        </Button>
                          
                 </C.Form>
 
