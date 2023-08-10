@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../hooks/auth';
 import { api } from '../../services/api';
+import { useMediaQuery } from 'react-responsive';
 
 import { Container } from './style';
 import { Button } from '../Button';
@@ -12,26 +13,45 @@ import { PiPencilLineLight } from 'react-icons/pi'
 
 import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai'
 
+import test from '../../assets/Mask group-10.png'
 
-import image from '../../assets/Mask group-10.png'
+export function Card({data, title, description, price, image, onClick, ...rest}){
+    const isMobile = useMediaQuery({ maxWidth: 768 });
 
+    const [quantity, setQuantity] = useState(1);
+    const [imageFood, setImageFood] = useState(null);
 
-export function Card({data, ...rest}){
     const { user } = useAuth();
 
     const navigate = useNavigate();
 
-    function handleEditFood(){
-        navigate("/edit/1");
+
+    function handleEditFood(id){
+        navigate(`/edit/${id}`);
     }
 
-    function handleDetailsFood(){
-        navigate("/details/1");
+    function handleAddQuantity(){
+        return setQuantity(prevState => ++prevState);
+    
+    }
+    function handleRemoveQuantity(){
+        return setQuantity(prevState => --prevState);
     }
 
+    useEffect(() => {
+        async function fetchImageFood(){
+            if(image) {
+                setImageFood(`${api.defaults.baseURL}/files/${image}`)
+            } else {
+                setImageFood(test)
+            }
+        }
+
+        fetchImageFood();
+    }, [image])
 
     return(
-        <Container>  
+        <Container {...rest}>  
             <button>
                 {
                     user.isAdmin ?
@@ -42,31 +62,46 @@ export function Card({data, ...rest}){
             </button>
            
             <div className='img'>
-                <img src={image} alt="teste" />
+                <img src={imageFood} alt={title} />
             </div>
 
-            <a type='button' onClick={handleDetailsFood} className='title'>
-                <h3>salada <FaAngleRight/></h3>
+            <a type='button' onClick={onClick} className='title'>
+                <h3>{title} <FaAngleRight/></h3>
             </a>
 
-            <p>Presunto de parma e rúcula em um pão com fermentação natural.</p>
+            {
+                isMobile ? 
+                <></>
+                :
+                <p>{description}</p>
+            }
 
-            <strong>R$ 10.21</strong>
+            <strong>R$ {(price * quantity).toFixed(2)}</strong>
 
             {
                 user.isAdmin ?
                 <></>  
                 :
                 <div className='quantity'>
-                    <button className='btn'><FiMinus size={25}/></button>
-                    <span>0</span>
-                    <button className='btn'><FiPlus size={25}/></button>
-                    <Button title="incluir"/>
+                    <button 
+                    className='btn' 
+                    onClick={handleRemoveQuantity}
+                    disabled={quantity <= 1}
+                    >
+                        <FiMinus size={25}/>
+                    </button>
+
+                    <span>{quantity < 10 ? `0${quantity}` : quantity}</span>
+
+                    <button 
+                    className='btn' 
+                    onClick={handleAddQuantity}>
+                        <FiPlus size={25}/>
+                    </button>
+
+                    <Button title="Incluir"/>
                 </div>
             }
-
-
-
         </Container>
     );
 }

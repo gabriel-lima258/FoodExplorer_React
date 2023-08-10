@@ -11,6 +11,7 @@ import { Card } from '../../components/Card';
 import { Footer } from '../../components/Footer';
 
 import Slogan from '../../assets/Slogan_biscoito.svg';
+import { api } from '../../services/api';
 
 
 export function Home(){
@@ -18,12 +19,28 @@ export function Home(){
     const [search, setSearch] = useState("");
 
     const isMobile = useMediaQuery({ maxWidth: 1023})
+    const navigate = useNavigate();
+
+    function handleDetailsFood(id){
+        navigate(`/details/${id}`);
+    }
+
+    useEffect(() => {
+        async function fetchFood() {
+            const response = await api.get(`/foods?title=${search}`)
+            setFoods(response.data)
+        }
+
+        fetchFood()
+    }, [search]) 
+
+    
   
 
     return(
         <C.Container>
             
-            {isMobile ? <Header/> : <HeaderDesktop/>}
+            {isMobile ? <Header/> : <HeaderDesktop onChange={e => setSearch(e.target.value)}/>}
 
             <C.Content>
                 <C.Slogan>
@@ -34,44 +51,65 @@ export function Home(){
                     </div>
                 </C.Slogan>
 
+            {
+                foods.filter(food => food.category == "Refeições").length > 0 &&
+
                 <SectionCard title="Refeições" whiteColor>
-                 <Card/>
-                 <Card/>
-                 <Card/>
-                 <Card/>
-                 <Card/>
-                 <Card/>
-                 <Card/>
-                 <Card/>
-                 <Card/>
-                 <Card/>
-                 <Card/>
-                 <Card/>
-                
-               
-
+                    {
+                        foods.filter(food => food.category == "Refeições").map(food => (
+                            <Card
+                            key={String(food.id)}
+                            data={food}
+                            title={food.title}
+                            description={food.description}
+                            price={food.price}
+                            image={food.avatarFood}
+                            onClick={() => handleDetailsFood(food.id)}
+                            />
+                        ))
+                    }
                 </SectionCard>
+            }
 
-                <SectionCard title="Pratos principais" whiteColor>
-                 <Card/>
-                 <Card/>
-                 <Card/>
-                 <Card/>
-                 <Card/>
-                 <Card/>
+            {
+                foods.filter(food => food.category == "Sobremesas").length > 0 &&
 
+                <SectionCard title="Sobremesas" whiteColor>
+                    {
+                        foods.filter(food => food.category == "Sobremesas").map(food => (
+                            <Card
+                            key={String(food.id)}
+                            data={food}
+                            title={food.title}
+                            description={food.description}
+                            price={food.price}
+                            image={food.avatarFood}
+                            onClick={() => handleDetailsFood(food.id)}
+                            />
+                        ))
+                    }
                 </SectionCard>
+            }
+
+            {
+                foods.filter(food => food.category == "Bebidas").length > 0 &&
 
                 <SectionCard title="Bebidas" whiteColor>
-                 <Card/>
-                 <Card/>
-                 <Card/>
-                 <Card/>
-                 <Card/>
-                 <Card/>
-
+                    {
+                        foods.filter(food => food.category == "Bebidas").map(food => (
+                            <Card
+                            key={String(food.id)}
+                            data={food}
+                            title={food.title}
+                            description={food.description}
+                            price={food.price}
+                            image={food.avatarFood}
+                            onClick={() => handleDetailsFood(food.id)}
+                            />
+                        ))
+                    }
                 </SectionCard>
-
+            }
 
             </C.Content>
             

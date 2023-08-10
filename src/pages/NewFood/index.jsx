@@ -38,7 +38,7 @@ export function NewFood(){
     const isMobile = useMediaQuery({ maxWidth: 1023});
 
     function handleBack(){
-        navigate("/menu")
+        navigate("/");
     }
 
     // função para pegar valores anteriores e adicionar novo valor
@@ -56,10 +56,10 @@ export function NewFood(){
 
     const formData = new FormData();
 
-    if (!title){
-        return toast.error("Você precisa inserir o nome do prato, por favor digite novamente.", {
-            position: toast.POSITION.TOP_RIGHT
-        });
+    if(!title || !category || !price || !description || !ingredients){
+        //toast.warn("Prencha todos os dados do novo item!");
+        alert("Prencha todos os dados do novo item!")
+        return;
     }
 
     // Form data pega um conjunto de valores referidos e o append insere um valor caso exista ou não um valor
@@ -77,17 +77,15 @@ export function NewFood(){
     try {
         setLoading(true);
         await api.post("/foods", formData);
-        toast.success("Prato adicionado com sucesso!", {
-            position: toast.POSITION.TOP_CENTER
-        });
-
-        navigate("/");
+        
+        alert("Item adicionado com sucesso!");
+        handleBack();
 
         setLoading(false);
 
     } catch (error){
         setLoading(false);
-        error.response ? error.response.data.message : "Não foi possível cadastrar este filme..."
+        error.response ? error.response.data.message : "Não foi possível cadastrar este item..."
         toast.error("Não foi possível cadastrar o prato!", {
             position: toast.POSITION.TOP_CENTER
         });

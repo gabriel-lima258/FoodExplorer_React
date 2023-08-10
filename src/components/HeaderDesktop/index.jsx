@@ -14,8 +14,8 @@ import Polygon from  '../../assets/Polygon.svg'
 import { ButtonText } from "../ButtonText";
 import { FiLogOut } from "react-icons/fi";
 
-export function HeaderDesktop(){
-    const [menuIsVisible, setMenuIsVisible] = useState(false);
+export function HeaderDesktop({onChange}){
+    const [search, setSearch] = useState("");
 
     const {user, signOut} = useAuth()
     const navigate = useNavigate();
@@ -54,6 +54,7 @@ export function HeaderDesktop(){
                         placeholder="Busque por pratos ou ingredientes"
                         type="text"
                         icon={BsSearch}
+                        onChange={onChange}
                     />
 
                     <ButtonText title="Meus favoritos"/>
