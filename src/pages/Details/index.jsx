@@ -7,12 +7,12 @@ import { api } from "../../services/api";
 import * as C from './style';
 
 import {AiOutlineLeft} from 'react-icons/ai'
+import {PiReceiptBold} from  "react-icons/pi"
 import { FiMinus, FiPlus } from 'react-icons/fi';
 
 import { Header } from '../../components/Header';
 import { Footer } from '../../components/Footer';
 import { Button } from '../../components/Button';
-import { ButtonText } from '../../components/ButtonText';
 import { IngredientTag } from '../../components/IngredientTag';
 import { HeaderDesktop } from "../../components/HeaderDesktop";
 
@@ -21,6 +21,7 @@ import salada from '../../assets/Mask group.png';
 export function DetailsFood(){
     const [data, setData] = useState(null);
     const [image, setImage] = useState(null);
+    const [quantity, setQuantity] = useState(1);
 
     const {user} = useAuth();
 
@@ -28,6 +29,14 @@ export function DetailsFood(){
     const params = useParams();
 
     const isMobile = useMediaQuery({ maxWidth: 1023})
+
+    function handleAddQuantity(){
+        return setQuantity(prevState => ++prevState);
+    
+    }
+    function handleRemoveQuantity(){
+        return setQuantity(prevState => --prevState);
+    }
 
     function handleBack(){
         navigate("/");
@@ -105,10 +114,27 @@ export function DetailsFood(){
                 />
                 :
                 <div className='order'>
-                    <button className='btn'><FiMinus size={25}/></button>
-                    <span>0</span>
-                    <button className='btn'><FiPlus size={25}/></button>
-                    <Button title="pedir - pix 25.00"/>
+                    <button 
+                    className='btn'
+                    onClick={handleRemoveQuantity}
+                    disabled={quantity <= 1}
+                    >
+                        <FiMinus size={25}/>
+                    </button>
+                    <span>{quantity < 10 ? `0${quantity}` : quantity}</span>
+                    <button 
+                    className='btn'
+                    onClick={handleAddQuantity}
+                    >
+                    <FiPlus size={25}/>
+                    </button>
+
+                    <Button 
+                    title={`Incluir > R$ ${(data.price * quantity).toFixed(2)}`}
+                    icon={isMobile ? PiReceiptBold : null}
+                    />
+
+            
                 </div>
                 }
      
