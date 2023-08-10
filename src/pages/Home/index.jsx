@@ -60,6 +60,7 @@ export function Home(){
                             <Card
                             key={String(food.id)}
                             data={food}
+                            id={food.id}
                             title={food.title}
                             description={food.description}
                             price={food.price}
@@ -80,6 +81,7 @@ export function Home(){
                             <Card
                             key={String(food.id)}
                             data={food}
+                            id={food.id}
                             title={food.title}
                             description={food.description}
                             price={food.price}
@@ -100,6 +102,7 @@ export function Home(){
                             <Card
                             key={String(food.id)}
                             data={food}
+                            id={food.id}
                             title={food.title}
                             description={food.description}
                             price={food.price}

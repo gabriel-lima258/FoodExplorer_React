@@ -15,7 +15,7 @@ import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai'
 
 import test from '../../assets/Mask group-10.png'
 
-export function Card({data, title, description, price, image, onClick, ...rest}){
+export function Card({data, title, description, price, image, onClick, id, ...rest}){
     const isMobile = useMediaQuery({ maxWidth: 768 });
 
     const [quantity, setQuantity] = useState(1);
@@ -26,7 +26,7 @@ export function Card({data, title, description, price, image, onClick, ...rest})
     const navigate = useNavigate();
 
 
-    function handleEditFood(id){
+    function handleEditFood(){
         navigate(`/edit/${id}`);
     }
 

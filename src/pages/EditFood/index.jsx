@@ -1,6 +1,6 @@
 import { useNavigate, useParams } from 'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { api } from '../../services/api';
 
 import * as C from './style'
@@ -52,43 +52,22 @@ export function EditFood(){
 
     async function handleRemoveFood(){
 
-    const formData = new FormData();
+        const isConfirm = window.confirm("Deseja excluir este item?")
 
-    formData.append("avatarFood", image); 
-    formData.append("title", title);
-    formData.append("description", description);
-    formData.append("category", category);
-    formData.append("price", price);
-
-    const ingredientsNames = ingredients.map(item => item.name);
-
-    formData.append("ingredients", ingredientsNames);
-
-    try {
+        if (isConfirm){
         setLoading(true);
 
-        await api.delete(`/food/${params.id}`, formData);
-
-        alert("Item excluido com sucesso!");
+        await api.delete(`/foods/${params.id}`);
         handleBack();
+        alert("Item excluido com sucesso!");
 
-        setLoading(false);
-
-    } catch (error){
-        setLoading(false);
-        error.response ? error.response.data.message : "Não foi possível excluir este item..." 
-    }
+        }
+        setLoading(false);  
 }
     
     async function handleEditFood(){
     
     const formData = new FormData();
-
-    if(!title || !category || !price || !description || !ingredients){
-        //toast.warn("Prencha todos os dados do novo item!");
-        alert("Prencha todos os dados do novo item!")
-        return;
-    }
 
     // Form data pega um conjunto de valores referidos e o append insere um valor caso exista ou não um valor
 
@@ -102,10 +81,26 @@ export function EditFood(){
 
     formData.append("ingredients", ingredientsNames);
 
+    if(image){
+        api.patch(`/foods/avatar/${params.id}`, formData).then(() => {
+            alert("Imagem atualizada com sucesso!");
+
+            const isConfirm = window.confirm("Deseja voltar?");
+            if(isConfirm){
+            handleBack();
+            }
+
+        }).catch((error) => {
+            if(error.response) {
+                error.response ? error.response.data.message : "Não foi possível editar a imagem este item..."
+            }
+        });
+    }
+
     try {
         setLoading(true);
 
-        await api.put(`/food/${params.id}`, formData);
+        await api.put(`/foods/${params.id}`, formData);
 
         alert("Item editado com sucesso!");
         handleBack();
@@ -117,6 +112,23 @@ export function EditFood(){
         error.response ? error.response.data.message : "Não foi possível editar este item..." 
     }
 }
+
+    useEffect(() => {
+
+        async function fetchFood(){
+            const response = await api.get(`/foods/${params.id}`);
+            console.log(response.data);
+
+            const { category, title, price, description, ingredients } = response.data;
+            setTitle(title);
+            setCategory(category);
+            setDescription(description);
+            setPrice(price);
+            setIngredients(ingredients.map(ingredient => ingredient.name));
+        }
+
+        fetchFood();
+    }, [])
 
 
 
