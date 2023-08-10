@@ -30,6 +30,7 @@ export const Logo = styled(Link)`
     font-size: 2.4rem;
     font-weight: 700;
     display: flex;
+    flex-direction: column;
 
     align-items: end;
     }
