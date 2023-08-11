@@ -21,9 +21,6 @@ export function Home(){
     const isMobile = useMediaQuery({ maxWidth: 1023})
     const navigate = useNavigate();
 
-    function handleDetailsFood(id){
-        navigate(`/details/${id}`);
-    }
 
     useEffect(() => {
         async function fetchFood() {
@@ -57,12 +54,6 @@ export function Home(){
                             <Card
                             key={String(food.id)}
                             data={food}
-                            id={food.id}
-                            title={food.title}
-                            description={food.description}
-                            price={food.price}
-                            image={food.avatarFood}
-                            onClick={() => handleDetailsFood(food.id)}
                             />
                         ))
                     }
@@ -78,12 +69,6 @@ export function Home(){
                             <Card
                             key={String(food.id)}
                             data={food}
-                            id={food.id}
-                            title={food.title}
-                            description={food.description}
-                            price={food.price}
-                            image={food.avatarFood}
-                            onClick={() => handleDetailsFood(food.id)}
                             />
                         ))
                     }
@@ -99,12 +84,6 @@ export function Home(){
                             <Card
                             key={String(food.id)}
                             data={food}
-                            id={food.id}
-                            title={food.title}
-                            description={food.description}
-                            price={food.price}
-                            image={food.avatarFood}
-                            onClick={() => handleDetailsFood(food.id)}
                             />
                         ))
                     }

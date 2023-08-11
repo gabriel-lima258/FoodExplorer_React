@@ -78,17 +78,18 @@ export const Slogan = styled.div`
                 position: absolute;
                 width: 40rem;
                 height: 40rem;
-                left: -1rem;
+                left: -5rem;
                 bottom: -7rem;
                 opacity: 0.8;
             }
 
             @media (min-width: 1300px) {
                 position: absolute;
-                width: 42rem;
-                height: 43rem;
-                left: 3rem;
+                width: 40rem;
+                height: 40rem;
+                left: -5rem;
                 bottom: -7rem;
+                opacity: 0.9;
             }
     }
 

@@ -1,7 +1,10 @@
-import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useAuth } from '../../hooks/auth';
+import { useFavorites } from '../../hooks/favorites';
+import { useCart } from '../../hooks/cart';
 import { api } from '../../services/api';
+
 import { useMediaQuery } from 'react-responsive';
 
 import { Container } from './style';
@@ -13,22 +16,25 @@ import { PiPencilLineLight } from 'react-icons/pi'
 
 import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai'
 
-import test from '../../assets/Mask group-10.png'
+import imagePlaceholder from '../../assets/Mask group-10.png'
 
-export function Card({data, title, description, price, image, onClick, id, ...rest}){
+export function Card({data, ...rest}){
+
     const isMobile = useMediaQuery({ maxWidth: 768 });
 
     const [quantity, setQuantity] = useState(1);
-    const [imageFood, setImageFood] = useState(null);
 
     const { user } = useAuth();
 
-    const navigate = useNavigate();
+    //====carrega a imagem do prato====//
+    const imageURL = `${api.defaults.baseURL}/files/${data.avatarFood}` 
 
+    //====carrega e guarda favorites====//
+    const { favorites, addDishToFavorite, removeDishFromFavorite } = useFavorites()
+    
 
-    function handleEditFood(){
-        navigate(`/edit/${id}`);
-    }
+    //====carrega e guarda cart====//
+    const { handleAddDishToCart, paymentAccept } = useCart();
 
     function handleAddQuantity(){
         return setQuantity(prevState => ++prevState);
@@ -38,45 +44,35 @@ export function Card({data, title, description, price, image, onClick, id, ...re
         return setQuantity(prevState => --prevState);
     }
 
-    useEffect(() => {
-        async function fetchImageFood(){
-            if(image) {
-                setImageFood(`${api.defaults.baseURL}/files/${image}`)
-            } else {
-                setImageFood(test)
-            }
-        }
-
-        fetchImageFood();
-    }, [image])
-
     return(
         <Container {...rest}>  
             <button>
                 {
                     user.isAdmin ?
-                    <PiPencilLineLight color='white' size={30} onClick={handleEditFood}/>
+                    <Link to={`edit/${data.id}`}>
+                        <PiPencilLineLight color='white' size={30}/>
+                    </Link>
                     :
                     <AiOutlineHeart color='white' size={30}/>
                 }
             </button>
            
             <div className='img'>
-                <img src={imageFood} alt={title} />
+                <img src={imageURL} alt={data.title} />
             </div>
 
-            <a type='button' onClick={onClick} className='title'>
-                <h3>{title} <FaAngleRight/></h3>
-            </a>
+            <Link type='button' to={`details/${data.id}`} className='title'>
+                <h3>{data.title} <FaAngleRight/></h3>
+            </Link>
 
             {
                 isMobile ? 
                 <></>
                 :
-                <p>{description}</p>
+                <p>{data.description}</p>
             }
 
-            <strong>R$ {(price * quantity).toFixed(2)}</strong>
+            <strong>R$ {(data.price * quantity).toFixed(2)}</strong>
 
             {
                 user.isAdmin ?

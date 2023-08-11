@@ -30,6 +30,8 @@ export function DetailsFood(){
 
     const isMobile = useMediaQuery({ maxWidth: 1023})
 
+    const imageURL = data && `${api.defaults.baseURL}/files/${data.avatarFood}`;
+
     function handleAddQuantity(){
         return setQuantity(prevState => ++prevState);
     
@@ -56,18 +58,6 @@ export function DetailsFood(){
         fetchFood();
     }, []);
 
-    useEffect(() => {
-        async function fetchImage(){
-            if(data) {
-                setImage(`${api.defaults.baseURL}/files/${data.avatarFood}`)
-            } else {
-                setImage(salada)
-            }
-        }
-
-        fetchImage();
-    }, [data]);
-
 
     return(
         <C.Container>
@@ -84,7 +74,7 @@ export function DetailsFood(){
                 <strong>voltar</strong>
             </button>
 
-            <img src={image} alt={data.title} />
+            <img src={imageURL} alt={data.title} />
 
             <div className="info">
                 <h1>{data.title}</h1>
