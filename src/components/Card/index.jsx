@@ -17,24 +17,24 @@ import { PiPencilLineLight } from 'react-icons/pi'
 import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai'
 
 import imagePlaceholder from '../../assets/Mask group-10.png'
+import { ButtonText } from '../ButtonText';
 
 export function Card({data, ...rest}){
-
-    const isMobile = useMediaQuery({ maxWidth: 768 });
-
     const [quantity, setQuantity] = useState(1);
-
-    const { user } = useAuth();
-
-    //====carrega a imagem do prato====//
-    const imageURL = `${api.defaults.baseURL}/files/${data.avatarFood}` 
-
-    //====carrega e guarda favorites====//
-    const { favorites, addDishToFavorite, removeDishFromFavorite } = useFavorites()
     
-
+    const { user } = useAuth();
+    
     //====carrega e guarda cart====//
     const { handleAddDishToCart, paymentAccept } = useCart();
+    
+    //====carrega e guarda favorites====//
+    const { favorites, addDishToFavorite, removeDishFromFavorite } = useFavorites()
+    const isFavorite = favorites && favorites.some((dish) => dish.title === data.title)
+    
+    //====carrega a imagem do prato====//
+    const imageURL = `${api.defaults.baseURL}/files/${data.avatarFood}` 
+    
+    const isMobile = useMediaQuery({ maxWidth: 768 });
 
     function handleAddQuantity(){
         return setQuantity(prevState => ++prevState);
@@ -53,7 +53,18 @@ export function Card({data, ...rest}){
                         <PiPencilLineLight color='white' size={30}/>
                     </Link>
                     :
-                    <AiOutlineHeart color='white' size={30}/>
+                    <button 
+                    className='btn-favorites'
+                    onClick={() => isFavorite ? removeDishFromFavorite(data) : addDishToFavorite(data)}
+                    >
+                        {
+                            isFavorite ?
+                            <AiFillHeart size={30}/>
+                            :
+                            <AiOutlineHeart size={30}/>
+                        }
+                    </button>
+                    
                 }
             </button>
            
@@ -95,7 +106,11 @@ export function Card({data, ...rest}){
                         <FiPlus size={25}/>
                     </button>
 
-                    <Button title="Incluir"/>
+                    <Button 
+                    title="Incluir"
+                    onClick={() => handleAddDishToCart(data, quantity, imageURL)}
+                    disabled={paymentAccept}
+                    />
                 </div>
             }
         </Container>

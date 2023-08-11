@@ -25,15 +25,18 @@ export const Container = styled.div`
     }
     
 
-  > button:first-child {
+  .btn-favorites {
     display: flex;
     position: absolute;
-    top: 1rem;
-    right: 1.4rem;
-    
+    top: 2.1rem;
+    right: 2.1rem;
+
     background: none;
     border: none;
-    color: ${({ theme }) => theme.COLORS.LIGHT_300};
+
+    svg {
+      color: ${({ theme, isFavorite }) => isFavorite ? theme.COLORS.TOMATO_200 : theme.COLORS.LIGHT_100};
+    }
   }
 
   .img {
