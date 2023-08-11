@@ -8,23 +8,15 @@ import { OrderItem } from '../../components/OrderItem';
 import { Footer } from '../../components/Footer'
 import { Header } from '../../components/Header';
 import { HeaderDesktop } from "../../components/HeaderDesktop";
-import { Button } from '../../components/Button';
 
 export function Favorite(){
 
-    const {user, signOut} = useAuth()
+    const {user} = useAuth()
     const navigate = useNavigate();
 
     const isMobile = useMediaQuery({ maxWidth: 1023})
 
-    function handleHome(){
-        navigate("/");
-    }
 
-    function handleSignOut(){
-        signOut();
-        handleHome();
-    }
 
    
 
@@ -37,7 +29,11 @@ export function Favorite(){
                     <C.Orders>
                         <h3>Meus favoritos</h3>
 
-                        <div className="session-orders">
+                        <div className="section-orders">
+                            <OrderItem/>
+                            <OrderItem/>
+                            <OrderItem/>
+                            <OrderItem/>
                             <OrderItem/>
                             <OrderItem/>
                             <OrderItem/>

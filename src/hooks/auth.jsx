@@ -5,7 +5,6 @@ export const AuthContext = createContext({});
 
 function AuthProvider({ children }) {
   const [data, setData] = useState({});
-  const [favorites, setFavorites] = useState([]);
   const [loading, setLoading] = useState(false)
   
   async function signIn({email, password}) {
@@ -44,7 +43,6 @@ function AuthProvider({ children }) {
   useEffect(() => {
     const user = localStorage.getItem("@foodexplorer:user");
     const token = localStorage.getItem("@foodexplorer:token");
-    const favorites = localStorage.getItem("@foodexplorer:favorites");
 
     if (token && user) {
       api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
@@ -55,9 +53,6 @@ function AuthProvider({ children }) {
       });
     }
 
-    if(favorites){
-      setFavorites(JSON.parse(favorites));
-    }
   }, [])
 
   return (
@@ -66,8 +61,6 @@ function AuthProvider({ children }) {
       signOut,
       loading,
       setLoading,
-      favorites,
-      setFavorites,
       user: data.user, 
     }}>
       { children }

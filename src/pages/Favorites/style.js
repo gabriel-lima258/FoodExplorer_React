@@ -38,20 +38,15 @@ export const Orders = styled.div`
 
     }
 
-    .total {
-        color: ${({theme}) => theme.COLORS.LIGHT_300};
-        font-family: Poppins;
-        font-size: 2rem;
-        font-weight: 500;
-    }
-
-    .btn-payment {
-        margin-top: 3rem;
+    .section-orders{
+        display: flex;
+        flex-direction: column;
         
-        align-self: end;
-        
-        width: 21rem;
+        @media (min-width: 1024px) {
+        flex-direction: row;
+        gap: 4rem;
+        flex-wrap: wrap;
+        }
     }
-
 
 `

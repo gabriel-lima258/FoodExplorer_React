@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useAuth } from "../../hooks/auth";
 import { useNavigate } from "react-router-dom";
+import { api } from "../../services/api";
 
 import * as C from "./style";
 
@@ -14,8 +15,7 @@ import Polygon from  '../../assets/Polygon.svg'
 import { ButtonText } from "../ButtonText";
 import { FiLogOut } from "react-icons/fi";
 
-export function HeaderDesktop({onChange}){
-    const [search, setSearch] = useState("");
+export function HeaderDesktop({search}){
 
     const {user, signOut} = useAuth()
     const navigate = useNavigate();
@@ -31,6 +31,10 @@ export function HeaderDesktop({onChange}){
 
     function handleNewFood(){
         navigate("/new");
+    }
+
+    function handleFavoriteFood(){
+        navigate("/favorite");
     }
 
     return(
@@ -54,10 +58,10 @@ export function HeaderDesktop({onChange}){
                         placeholder="Busque por pratos ou ingredientes"
                         type="text"
                         icon={BsSearch}
-                        onChange={onChange}
+                        onChange={e => {search(e.target.value)}}
                     />
 
-                    <ButtonText title="Meus favoritos"/>
+                    <ButtonText title="Meus favoritos" onClick={handleFavoriteFood}/>
 
                         {
                             user.isAdmin ?

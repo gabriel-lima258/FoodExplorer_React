@@ -57,7 +57,6 @@ export function NewFood(){
     const formData = new FormData();
 
     if(!title || !category || !price || !description || !ingredients){
-        //toast.warn("Prencha todos os dados do novo item!");
         alert("Prencha todos os dados do novo item!")
         return;
     }
@@ -70,9 +69,9 @@ export function NewFood(){
     formData.append("category", category);
     formData.append("price", price);
 
-    const ingredientsNames = ingredients.map(item => item.name);
-
-    formData.append("ingredients", ingredientsNames)
+    ingredients.map(ingredient => (
+        formData.append("ingredients", ingredient)
+    ));
 
     try {
         setLoading(true);
@@ -86,9 +85,6 @@ export function NewFood(){
     } catch (error){
         setLoading(false);
         error.response ? error.response.data.message : "Não foi possível cadastrar este item..."
-        toast.error("Não foi possível cadastrar o prato!", {
-            position: toast.POSITION.TOP_CENTER
-        });
     }
 }
 

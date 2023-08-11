@@ -42,13 +42,14 @@ export function DetailsFood(){
         navigate("/");
     }
 
-    function handleEditFood(id){
-        navigate(`/edit/${id}`);
+    function handleEditFood(){
+        navigate(`/edit/${params.id}`);
     }
 
     useEffect(() => {
         async function fetchFood(){
             const response = await api.get(`/foods/${params.id}`);
+            console.log(response.data);
             setData(response.data);
         }
 
@@ -92,7 +93,7 @@ export function DetailsFood(){
                 <div className="tags">
 
                     {
-                        data.ingredients.map(ingredients => (
+                        data.ingredients && data.ingredients.map(ingredients => (
                             
                             <IngredientTag 
                             key={String(ingredients.id)}  

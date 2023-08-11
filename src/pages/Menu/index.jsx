@@ -1,5 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from "../../hooks/auth";
+import { useState, useEffect } from 'react';
+import { api } from '../../services/api';
 
 import * as C from './style'
 
@@ -7,9 +9,12 @@ import {AiOutlineClose} from 'react-icons/ai';
 import {BsSearch} from 'react-icons/bs';
 
 import { Input } from '../../components/Input';
+import { Card } from '../../components/Card';
 import { Footer } from '../../components/Footer'
 
 export function Menu(){
+    const [foods, setFoods] = useState([]);
+    const [search, setSearch] = useState("");
 
     const {user, signOut} = useAuth()
     const navigate = useNavigate();
@@ -28,6 +33,20 @@ export function Menu(){
         navigate("/new");
     }
 
+    function handleFavorites(){
+        navigate("/favorite");
+    }
+
+    useEffect(() => {
+        async function fetchFood() {
+            const response = await api.get(`/foods?title=${search}`)
+            setFoods(response.data)
+        }
+
+        fetchFood()
+    }, [search]) 
+
+
     return(
         <C.Container>
             <C.Header>
@@ -43,6 +62,7 @@ export function Menu(){
                     placeholder="Busque por pratos ou ingredientes"
                     type="text"
                     icon={BsSearch}
+                    onChange={e => (setSearch(e.target.value))}
                 />
 
                 <div className="buttons">
@@ -52,11 +72,12 @@ export function Menu(){
                             Novo Prato
                         </button>
                         :
-                        <button>
+                        <button onClick={handleFavorites}>
                             Meus favoritos
                         </button>
                     }
                     <button onClick={handleSignOut}>Sair</button>
+
                 </div>
 
                 </C.Content>

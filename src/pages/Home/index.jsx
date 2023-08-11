@@ -34,13 +34,10 @@ export function Home(){
         fetchFood()
     }, [search]) 
 
-    
-  
-
     return(
         <C.Container>
             
-            {isMobile ? <Header/> : <HeaderDesktop onChange={e => setSearch(e.target.value)}/>}
+            {isMobile ? <Header/> : <HeaderDesktop search={setSearch}/>}
 
             <C.Content>
                 <C.Slogan>

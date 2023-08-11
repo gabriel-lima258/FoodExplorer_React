@@ -1,9 +1,10 @@
 import { Container } from './style';
 
-export function Select({icon: Icon, ...rest}){
+export function Select({icon: Icon, value, ...rest}){
     return(
         <Container>
-            <select {...rest}>
+            <select value={value} {...rest}>
+                <option value="default" disabled>Selecione a categoria</option>
                 <option value="Refeições">Refeições</option>
                 <option value="Sobremesas">Sobremesas</option>
                 <option value="Bebidas">Bebidas</option>

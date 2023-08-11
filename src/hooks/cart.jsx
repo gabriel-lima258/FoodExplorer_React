@@ -4,9 +4,83 @@ import { api } from '../services/api';
 export const CartContext = createContext({});
 
 function CartProvider({children}){
-    const [cart, setCart] = useState( JSON.parse(localStorage.getItem(`foodexplorer:cart` || [])))
-    const [payment, setPayment] = useState( JSON.parse(localStorage.getItem(`paymentAccept` || false)))
-    const [orders, setorders] = useState([])
+    const [paymentAccept, setPaymentAccept] = useState( JSON.parse(localStorage.getItem(`paymentAccept` || false)))
+    const [cart, setCart] = useState( JSON.parse(localStorage.getItem(`@foodexplorer:cart`)) || []) // criando um localStorage inicializador
+    const [orders, setOrders] = useState([])
 
-    function handleAddCart()
+    function handleAddDishToCart(data, quantity, image){
+
+    try {
+        const {id, title, price} = data;
+        const priceFormatted = quantity * Number(price.replace(',', '.'));
+
+        const order = {id, title, price: priceFormatted, image, quantity};
+
+        const orderExists = cart.some((userOrder) => userOrder.title === order.title)
+
+        if (orderExists){
+            return alert("Este item ja está no carrinho!");
+        }
+
+        setCart(prevState => [...prevState, order])
+    } catch (error) {
+        if(error.response){
+            alert(error.response.message)
+        } else {
+            alert("Não foi possível adicionar o item no carrinho")
+        }
+    }
+
+        alert("Item adicionado ao carrinho!")
+    }
+
+    function handleRemoveDishFromCart(deleted) {
+        setCart(prevState => prevState.filter(item => item.id !== deleted))
+    }
+
+    const total = cart.reduce((value, item) => {
+        return value + item.price
+    }, 0)
+
+    async function handleResetCart(id, navigate) {
+        localStorage.removeItem(`@foodexplorer:cart`);
+        localStorage.removeItem(`paymentAccept`);
+
+        setCart([]);
+        setPaymentAccept(false);
+
+        await api.delete(`/orders/${id}`);
+        navigate("/");
+    }
+
+    useEffect(() => {
+        localStorage.setItem(`@foodexplorer:cart`, JSON.stringify(cart));
+    }, [cart])
+
+    useEffect(() => {
+        localStorage.setItem(`paymentAccept`, JSON.stringify(paymentAccept));
+    }, [paymentAccept])
+
+    return(
+        <CartContext.Provider value={{
+            cart,
+            handleAddDishToCart,
+            handleRemoveDishFromCart,
+            total: String(total.toFixed(2)).replace('.', ','),
+            paymentAccept,
+            setPaymentAccept,
+            orders,
+            setOrders,
+            handleResetCart,
+        }}>
+            {children}
+        </CartContext.Provider>
+    )
 }
+
+function useCart(){
+    const context = useContext(CartContext)
+    return context;
+}
+
+export { CartProvider, useCart };

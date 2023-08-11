@@ -59,58 +59,42 @@ export function EditFood(){
 
         await api.delete(`/foods/${params.id}`);
         handleBack();
-        alert("Item excluido com sucesso!");
+        alert('Prato excluído com sucesso!');
 
         }
         setLoading(false);  
 }
     
     async function handleEditFood(){
+
+        const formData = new FormData();
+
+        setLoading(true)
+        formData.append("avatarFood", image);
+        formData.append("title", title);
+        formData.append("description", description);
+        formData.append("category", category);
+        formData.append("price", price);
     
-    const formData = new FormData();
-
-    // Form data pega um conjunto de valores referidos e o append insere um valor caso exista ou não um valor
-
-    formData.append("avatarFood", image); // primeiro valor da tabela do DB e o segundo do useState
-    formData.append("title", title);
-    formData.append("description", description);
-    formData.append("category", category);
-    formData.append("price", price);
-
-    const ingredientsNames = ingredients.map(item => item.name);
-
-    formData.append("ingredients", ingredientsNames);
-
-    if(image){
-        api.patch(`/foods/avatar/${params.id}`, formData).then(() => {
-            alert("Imagem atualizada com sucesso!");
-
-            const isConfirm = window.confirm("Deseja voltar?");
-            if(isConfirm){
-            handleBack();
-            }
-
-        }).catch((error) => {
-            if(error.response) {
-                error.response ? error.response.data.message : "Não foi possível editar a imagem este item..."
+        ingredients.map(ingredient => (
+            formData.append("ingredients", ingredient)
+        ))
+    
+        console.log(ingredients);
+    
+        await api
+        .put(`/foods/${params.id}`, formData)
+        .then(alert("Prato editado com sucesso!"))
+        .catch((error) => {
+            if (error.response) {
+            alert(error.response.data.message);
+            } else {
+            alert("Erro ao criar o prato");
             }
         });
-    }
-
-    try {
-        setLoading(true);
-
-        await api.put(`/foods/${params.id}`, formData);
-
-        alert("Item editado com sucesso!");
-        handleBack();
 
         setLoading(false);
 
-    } catch (error){
-        setLoading(false);
-        error.response ? error.response.data.message : "Não foi possível editar este item..." 
-    }
 }
 
     useEffect(() => {
@@ -152,17 +136,20 @@ export function EditFood(){
                         <C.InputWrapper>
     
                         <Section title="Imagem do prato">
+
                                 <InputFile
                                 type="file"
                                 icon={AiOutlineDownload}
                                 label="Selecione imagem"
                                 onChange={e => setImage(e.target.files[0])}
                                 />
+                               
                             </Section>
     
                             <Section title="Nome">
                                 <Input
                                 placeholder="Salada"
+                                value={title}
                                 type="text"
                                 onChange={e => setTitle(e.target.value)}
                                 />
@@ -170,7 +157,7 @@ export function EditFood(){
                             
                             <Section title="Categoria">
                                 <Select
-                                option="Selecionar"
+                                value={category}
                                 icon={FiArrowDown}
                                 onChange={e => setCategory(e.target.value)}
                                 />
@@ -209,6 +196,7 @@ export function EditFood(){
                             <Section title="Preço">
                                 <Input
                                 placeholder="R$ 10.00"
+                                value={price}
                                 type="text"
                                 onChange={e => setPrice(e.target.value)}
                                 />
