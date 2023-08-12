@@ -1,13 +1,11 @@
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from "../../hooks/auth";
+import { useCart } from '../../hooks/cart';
 import { useMediaQuery } from 'react-responsive';
+import { useState, useEffect } from 'react';
 
 import * as C from './style'
 
-import {AiOutlineClose} from 'react-icons/ai';
-import {BsSearch} from 'react-icons/bs';
-
-import { Input } from '../../components/Input';
 import { OrderItem } from '../../components/OrderItem';
 import { Footer } from '../../components/Footer'
 import { Header } from '../../components/Header';
@@ -16,21 +14,15 @@ import { Button } from '../../components/Button';
 
 export function Order(){
 
-    const {user, signOut} = useAuth()
+    const {user} = useAuth()
+
+    const { cart, total, handleResetCart } = useCart();
+
+    const { loading, setLoading } = useState(false);
+
     const navigate = useNavigate();
 
     const isMobile = useMediaQuery({ maxWidth: 1023})
-
-    function handleHome(){
-        navigate("/");
-    }
-
-    function handleSignOut(){
-        signOut();
-        handleHome();
-    }
-
-   
 
     return(
         <C.Container>
@@ -42,13 +34,21 @@ export function Order(){
                         <h3>Meu Pedido</h3>
 
                         <div className="session-orders">
-                            <OrderItem/>
-                            <OrderItem/>
-                            <OrderItem/>
+
+                            {
+                                cart &&
+                                    cart.map(item => (
+                                        <OrderItem
+                                        key={String(item.id)}
+                                        data={item}
+                                        />
+                                    ))
+                            }
+                           
                         </div>
 
                         <div className="total">
-                            <p>Total R$ <span>30.00</span></p>
+                            <p>Total R$ <span>{total}</span></p>
                         </div>
 
             

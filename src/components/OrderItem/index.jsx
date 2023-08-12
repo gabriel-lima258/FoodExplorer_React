@@ -2,24 +2,27 @@ import * as C from './style'
 
 import { ButtonText } from '../ButtonText'
 
-import image from '../../assets/Mask group-2.png'
+import { useCart } from '../../hooks/cart'
 
-export function OrderItem({data, favorite = false}){
+export function OrderItem({data}){
+
+    const { handleRemoveDishFromCart, paymentAccepct } = useCart();
+
     return(
-        <C.Container
-        $favorite={favorite}
-        >
+        <C.Container>
             <div>
-                <img src={image} alt="iamge" />
+                <img src={data.image} alt={data.title} />
             </div>
             <C.Content>
                 <div className='description'>
-                    <span>2 X Salada Grega</span>
-                    <strong>R$ 10.00</strong>
+                    <span>{data.quantity} X {data.title}</span>
+                    <strong>R$ {data.price}</strong>
                 </div>
 
                 <ButtonText
                     title="Excluir pedido"
+                    onClick={() => handleRemoveDishFromCart(data.id)}
+                    disabled={paymentAccepct}
                 />
             </C.Content>
         </C.Container>

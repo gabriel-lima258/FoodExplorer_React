@@ -28,15 +28,12 @@ export const Container = styled.div`
   .btn-favorites {
     display: flex;
     position: absolute;
-    top: 2.1rem;
-    right: 2.1rem;
-
-    background: none;
+    top: 1.2rem;
+    right: 1.2rem;
+   
+    background: transparent;
     border: none;
-
-    svg {
-      color: ${({ theme, isFavorite }) => isFavorite ? theme.COLORS.TOMATO_200 : theme.COLORS.LIGHT_100};
-    }
+    color: ${({ theme, isFavorite }) => isFavorite ? theme.COLORS.TOMATO_200 : theme.COLORS.LIGHT_100};
   }
 
   .img {

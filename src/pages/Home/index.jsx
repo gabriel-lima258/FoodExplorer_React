@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useFavorites } from '../../hooks/favorites';
 import { useMediaQuery } from 'react-responsive';
 
 import * as C from './style';
@@ -19,8 +19,7 @@ export function Home(){
     const [search, setSearch] = useState("");
 
     const isMobile = useMediaQuery({ maxWidth: 1023})
-    const navigate = useNavigate();
-
+    
 
     useEffect(() => {
         async function fetchFood() {
@@ -28,7 +27,7 @@ export function Home(){
             setFoods(response.data)
         }
 
-        fetchFood()
+        fetchFood();
     }, [search]) 
 
     return(
@@ -39,9 +38,11 @@ export function Home(){
             <C.Content>
                 <C.Slogan>
                     <img src={Slogan} alt="slogan biscoito" />
-                    <div>
-                        <h1>Sabores inigualáveis</h1>
-                        <p>Sinta o cuidado do preparo com ingredientes selecionados.</p>
+                    <div className="slogan">
+                        <div className='title'>
+                            <h1>Sabores inigualáveis</h1>
+                            <p>Sinta o cuidado do preparo com ingredientes selecionados.</p>
+                        </div>
                     </div>
                 </C.Slogan>
 
@@ -57,6 +58,8 @@ export function Home(){
                             />
                         ))
                     }
+
+                    
                 </SectionCard>
             }
 

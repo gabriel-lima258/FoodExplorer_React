@@ -208,6 +208,7 @@ export function EditFood(){
     
                             <Section title="Descrição">
                                 <TextArea
+                                defaultValue={description}
                                 placeholder="Fale brevemente sobre o prato, seus ingredientes e composição"
                                 onChange={e => setDescription(e.target.value)}
                                 />

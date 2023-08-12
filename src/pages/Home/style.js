@@ -46,9 +46,10 @@ export const Content = styled.main`
 export const Slogan = styled.div`
     height: 12rem;
     position: relative;
-   
+  
     margin-top: 4.4rem;
     margin-bottom: 4.8rem;
+    align-items: end;
 
     border-radius: 1.2rem;
 
@@ -85,15 +86,20 @@ export const Slogan = styled.div`
 
             @media (min-width: 1300px) {
                 position: absolute;
-                width: 40rem;
-                height: 40rem;
-                left: -5rem;
-                bottom: -7rem;
+                width: 63rem;
+                height: 30rem;
+                left: -15rem;
+                bottom: -3rem;
                 opacity: 0.9;
             }
     }
 
-    > div {
+    .slogan {
+        display: flex;
+        align-items: end;
+    }
+
+    .title {
         h1{
             font-family: 'Poppins', sans-serif;
             font-size: 1.8rem;

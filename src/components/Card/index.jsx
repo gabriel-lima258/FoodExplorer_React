@@ -17,11 +17,9 @@ import { PiPencilLineLight } from 'react-icons/pi'
 import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai'
 
 import imagePlaceholder from '../../assets/Mask group-10.png'
-import { ButtonText } from '../ButtonText';
 
 export function Card({data, ...rest}){
-    const [quantity, setQuantity] = useState(1);
-    
+  
     const { user } = useAuth();
     
     //====carrega e guarda cart====//
@@ -36,6 +34,8 @@ export function Card({data, ...rest}){
     
     const isMobile = useMediaQuery({ maxWidth: 768 });
 
+    const [quantity, setQuantity] = useState(1);
+
     function handleAddQuantity(){
         return setQuantity(prevState => ++prevState);
     
@@ -46,25 +46,24 @@ export function Card({data, ...rest}){
 
     return(
         <Container {...rest}>  
-            <button>
+            <button className='btn-favorites'
+            onClick={() => isFavorite ? removeDishFromFavorite(data) : addDishToFavorite(data)}
+            >
                 {
-                    user.isAdmin ?
+                    user.isAdmin
+                    ?
                     <Link to={`edit/${data.id}`}>
                         <PiPencilLineLight color='white' size={30}/>
                     </Link>
                     :
-                    <button 
-                    className='btn-favorites'
-                    onClick={() => isFavorite ? removeDishFromFavorite(data) : addDishToFavorite(data)}
-                    >
-                        {
-                            isFavorite ?
-                            <AiFillHeart size={30}/>
-                            :
-                            <AiOutlineHeart size={30}/>
-                        }
-                    </button>
-                    
+                    <>
+                    {
+                        isFavorite ?
+                        <AiFillHeart size={30}/>
+                        :
+                        <AiOutlineHeart size={30}/>
+                    }
+                    </>            
                 }
             </button>
            
