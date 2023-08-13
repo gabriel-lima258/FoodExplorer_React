@@ -9,7 +9,7 @@ export function Button({title, exclude = false, add = false, loading = false, ic
         $add={add}
         {...rest}
         >
-          {Icon && <Icon size={25}/>}
+          {Icon && <Icon size={20}/>}
           {loading ? 'Carregando' : title}
         </Container>
     )
