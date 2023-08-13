@@ -4,15 +4,15 @@ import { api } from '../services/api';
 export const CartContext = createContext({});
 
 function CartProvider({children}){
-    const [paymentAccept, setPaymentAccept] = useState( JSON.parse(localStorage.getItem(`paymentAccept` || false)))
-    const [cart, setCart] = useState( JSON.parse(localStorage.getItem(`@foodexplorer:cart`)) || []) // criando um localStorage inicializador
+    const [paymentAccept, setPaymentAccept] = useState(JSON.parse(localStorage.getItem(`paymentAccept` || false)))
+    const [cart, setCart] = useState(JSON.parse(localStorage.getItem(`@foodexplorer:cart`)) || []) // criando um localStorage inicializador
     const [orders, setOrders] = useState([])
 
     function handleAddDishToCart(data, quantity, image){
 
     try {
         const {id, title, price} = data;
-        const priceFormatted = quantity * Number(price.replace(',', '.'));
+        const priceFormatted = quantity * Number(price);
 
         const order = {id, title, price: priceFormatted, image, quantity};
 
@@ -23,15 +23,17 @@ function CartProvider({children}){
         }
 
         setCart(prevState => [...prevState, order])
+        
+        alert("Item adicionado ao carrinho!")
     } catch (error) {
         if(error.response){
             alert(error.response.message)
         } else {
             alert("Não foi possível adicionar o item no carrinho")
+            console.log(error)
         }
     }
 
-        alert("Item adicionado ao carrinho!")
     }
 
     function handleRemoveDishFromCart(deleted) {

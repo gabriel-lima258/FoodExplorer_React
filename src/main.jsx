@@ -6,7 +6,10 @@ import { ThemeProvider } from 'styled-components'
 import GlobalStyle from './styles/global'
 import theme from './styles/theme'
 
+// Sempre que criar um hook não esqueça de importá-lo para routes!
 import { AuthProvider } from './hooks/auth'
+import { CartProvider } from './hooks/cart'
+import { FavoritesProvider } from './hooks/favorites'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -14,9 +17,13 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <ThemeProvider theme={theme}>
       <GlobalStyle/>
           <AuthProvider>
+              <CartProvider>
+                  <FavoritesProvider>
 
-              <Routes/>
-
+                  <Routes/>
+                    
+                  </FavoritesProvider>
+              </CartProvider>
           </AuthProvider>
     </ThemeProvider>
 

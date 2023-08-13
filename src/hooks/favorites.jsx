@@ -5,12 +5,12 @@ export const FavoritesContext = createContext({})
 function FavoritesProvider({children}) {
     const [favorites, setFavorites] = useState(JSON.parse(localStorage.getItem(`@foodexplorer:favorites`)) || [])
 
-    function addDishToFavorites(data) {
+    function addDishToFavorite(data) {
         setFavorites(...favorites, data);
     }
 
-    function removeDishFromFavorites(data) {
-        setFavorites(favorites.filter((dish) => dish.id === data.id))
+    function removeDishFromFavorite(data) {
+        setFavorites(favorites.filter((dish) => dish.id !== data.id))
     }
 
     useEffect(() =>{
@@ -20,8 +20,8 @@ function FavoritesProvider({children}) {
     return (
         <FavoritesContext.Provider value={{
             favorites,
-            addDishToFavorites,
-            removeDishFromFavorites,
+            addDishToFavorite,
+            removeDishFromFavorite,
         }}>
             {children}
         </FavoritesContext.Provider>

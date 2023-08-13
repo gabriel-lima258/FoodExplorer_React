@@ -30,13 +30,7 @@ export function Favorite(){
                         <h3>Meus favoritos</h3>
 
                         <div className="section-orders">
-                            <OrderItem/>
-                            <OrderItem/>
-                            <OrderItem/>
-                            <OrderItem/>
-                            <OrderItem/>
-                            <OrderItem/>
-                            <OrderItem/>
+                           
                         </div>
 
                     </C.Orders>

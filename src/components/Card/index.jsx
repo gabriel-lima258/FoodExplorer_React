@@ -20,6 +20,7 @@ import imagePlaceholder from '../../assets/Mask group-10.png'
 
 export function Card({data, ...rest}){
   
+    const [quantity, setQuantity] = useState(1);
     const { user } = useAuth();
     
     //====carrega e guarda cart====//
@@ -27,18 +28,16 @@ export function Card({data, ...rest}){
     
     //====carrega e guarda favorites====//
     const { favorites, addDishToFavorite, removeDishFromFavorite } = useFavorites()
-    const isFavorite = favorites && favorites.some((dish) => dish.title === data.title)
+    const isFavorite = favorites.some((dish) => dish.title === data.title)
     
     //====carrega a imagem do prato====//
     const imageURL = `${api.defaults.baseURL}/files/${data.avatarFood}` 
     
     const isMobile = useMediaQuery({ maxWidth: 768 });
 
-    const [quantity, setQuantity] = useState(1);
 
     function handleAddQuantity(){
         return setQuantity(prevState => ++prevState);
-    
     }
     function handleRemoveQuantity(){
         return setQuantity(prevState => --prevState);
@@ -97,7 +96,7 @@ export function Card({data, ...rest}){
                         <FiMinus size={25}/>
                     </button>
 
-                    <span>{quantity < 10 ? `0${quantity}` : quantity}</span>
+                    <span>{quantity.toString().padStart(2, '0')}</span>
 
                     <button 
                     className='btn' 

@@ -1,4 +1,5 @@
 import { useAuth } from "../../hooks/auth";
+import { useCart } from "../../hooks/cart";
 import { useNavigate, useParams } from "react-router-dom";
 import { useMediaQuery } from 'react-responsive';
 import { useState, useEffect } from "react";
@@ -16,14 +17,14 @@ import { Button } from '../../components/Button';
 import { IngredientTag } from '../../components/IngredientTag';
 import { HeaderDesktop } from "../../components/HeaderDesktop";
 
-import salada from '../../assets/Mask group.png';
-
 export function DetailsFood(){
     const [data, setData] = useState(null);
-    const [image, setImage] = useState(null);
     const [quantity, setQuantity] = useState(1);
 
     const {user} = useAuth();
+
+    const { handleAddDishToCart } = useCart();
+    console.log(data);
 
     const navigate = useNavigate();
     const params = useParams();
@@ -65,7 +66,7 @@ export function DetailsFood(){
             {isMobile ? <Header/> : <HeaderDesktop/>}
 
         {
-                data &&
+            data &&
 
             <C.Content>
 
@@ -112,7 +113,7 @@ export function DetailsFood(){
                     >
                         <FiMinus size={25}/>
                     </button>
-                    <span>{quantity < 10 ? `0${quantity}` : quantity}</span>
+                    <span>{quantity.toString().padStart(2, '0')}</span>
                     <button 
                     className='btn'
                     onClick={handleAddQuantity}
@@ -123,6 +124,7 @@ export function DetailsFood(){
                     <Button 
                     title={`Incluir > R$ ${(data.price * quantity).toFixed(2)}`}
                     icon={isMobile ? PiReceiptBold : null}
+                    onClick={() => handleAddDishToCart(data, quantity, imageURL)}
                     />
 
             

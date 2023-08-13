@@ -3,6 +3,7 @@ import { useAuth } from "../../hooks/auth";
 import { useCart } from '../../hooks/cart';
 import { useMediaQuery } from 'react-responsive';
 import { useState, useEffect } from 'react';
+import { api } from '../../services/api';
 
 import * as C from './style'
 
@@ -13,6 +14,7 @@ import { HeaderDesktop } from "../../components/HeaderDesktop";
 import { Button } from '../../components/Button';
 
 export function Order(){
+    const [cartUser, setCartUser] = useState();
 
     const {user} = useAuth()
 
@@ -23,6 +25,15 @@ export function Order(){
     const navigate = useNavigate();
 
     const isMobile = useMediaQuery({ maxWidth: 1023})
+
+    useEffect(() => {
+        async function fetchCart(){
+            const response = await api.get(`/orders/${user.id}`)
+            setCartUser(response.data)
+        }
+
+        fetchCart();
+    }, []);
 
     return(
         <C.Container>
