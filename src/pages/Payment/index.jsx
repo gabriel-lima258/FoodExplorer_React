@@ -207,7 +207,7 @@ export function Order(){
             {
                 isMobile ?
                 <></>
-                :
+                :         
 
                 <C.Payment>
 

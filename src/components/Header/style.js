@@ -23,14 +23,28 @@ export const Nav = styled.nav`
     justify-content: space-between;
  
     button {
-        font-size: 3.0rem;
+        font-size: 1.4rem;
         background: none;
+        position: relative;
 
         display: flex;
         justify-content: center;
         align-items: center;
 
         color: ${({theme}) => theme.COLORS.LIGHT_100};
+    }
+
+    span {
+        position: relative;
+
+        width: 2rem;
+        height: 2rem;
+        
+        bottom: .8rem;
+        right: .8rem;
+       
+        border-radius: 10rem;
+        background-color: red;
     }
 `
 

@@ -1,5 +1,5 @@
-import { useState } from "react";
 import { useAuth } from "../../hooks/auth";
+import { useCart } from "../../hooks/cart";
 import { useNavigate } from "react-router-dom";
 
 import * as C from "./style";
@@ -10,10 +10,13 @@ import {PiReceiptBold} from  "react-icons/pi"
 import Polygon from  '../../assets/Polygon.svg'
 
 export function Header(){
-    const [menuIsVisible, setMenuIsVisible] = useState(false);
 
     const {user, signOut} = useAuth()
+    const {cart, orders} = useCart();
+
     const navigate = useNavigate();
+
+    const isCartIsEmpty = cart.length === 0;
 
     function handleMenu(){
         navigate("/menu");
@@ -42,17 +45,19 @@ export function Header(){
                         }
                     </C.Logo>
 
-                    <button>
                         {
                             user.isAdmin ?
                             <></>
                             : 
-                            <PiReceiptBold 
+                            <button>
+                            <PiReceiptBold
                             size={25} 
                             onClick={handleOrderFood}
                             />
+                                <span>{cart.length}</span>
+                            </button>
                         }
-                    </button>
+                  
                 </C.Nav>
 
         </C.Container>
