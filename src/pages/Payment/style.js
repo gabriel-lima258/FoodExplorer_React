@@ -21,9 +21,10 @@ export const Container = styled.div`
 
 export const Content = styled.main`
     grid-area: content;
+    width: 100%;
 
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     padding-inline: 3rem;
 
     .btn-payment {
@@ -31,7 +32,7 @@ export const Content = styled.main`
         
         align-self: end;
         
-        width: 21rem;
+        width: 21.6rem;
     }
     
     h3 {
@@ -41,6 +42,10 @@ export const Content = styled.main`
         font-weight: 500;
     }
 
+    @media(max-width: 768px){
+        justify-content: flex-start;
+    }
+
 
 `
 
@@ -48,6 +53,8 @@ export const Orders = styled.div`
     display: flex;
     flex-direction: column;
     margin-top: 3.6rem;
+    width: 100%;
+    
 
     .total {
         color: ${({theme}) => theme.COLORS.LIGHT_300};
@@ -55,6 +62,13 @@ export const Orders = styled.div`
         font-size: 2rem;
         font-weight: 500;
     }
+
+    @media(min-width: 767px){
+        width: auto;
+    }
+
+
+ 
     
 `
 
@@ -66,6 +80,16 @@ export const Payment = styled.div`
     flex-direction: column;
     align-items: start;
 
+    @media(min-width: 1024px){
+        width: 53rem;
+    }
+
+    span {
+        color: ${({theme}) => theme.COLORS.LIGHT_400};
+        font-size: 1.6rem;
+        font-weight: 400;
+    }
+
     .container {
         width: 100%;
         margin-top: 3.2rem;
@@ -75,9 +99,37 @@ export const Payment = styled.div`
 
     .content {
         display: flex;
+        flex-direction: column;
         justify-content: center;
-        padding: 3.2rem;
+        align-items: center;
+        padding: 3.1rem 3rem;
+
+        @media(min-width: 1024px){
+        padding: 5.9rem 9rem;
+        }
     }
+
+    #paymentPix img {
+            width: clamp(5rem, 5rem + 20vw, 27rem);
+            height: clamp(5rem, 5rem + 20vw, 27rem);
+
+            margin-bottom: 2rem;
+        }
+
+    .credit-card{
+        display: flex;
+        flex-direction: column;
+        gap: 3.7rem;
+
+
+        .date-card {
+        display: flex;
+        flex-direction: row;
+        gap: 1.7rem;
+        }
+    }
+
+    
 
     .btn-option-payment {
         width: 100%;

@@ -24,7 +24,7 @@ export function Card({data, ...rest}){
     const { user } = useAuth();
     
     //====carrega e guarda cart====//
-    const { handleAddDishToCart, paymentAccept } = useCart();
+    const { handleAddDishToCart } = useCart();
     
     //====carrega e guarda favorites====//
     const { favorites, addDishToFavorite, removeDishFromFavorite } = useFavorites()
@@ -107,7 +107,6 @@ export function Card({data, ...rest}){
                     <Button 
                     title="Incluir"
                     onClick={() => handleAddDishToCart(data, quantity, imageURL)}
-                    disabled={paymentAccept}
                     />
                 </div>
             }

@@ -4,7 +4,6 @@ import { api } from '../services/api';
 export const CartContext = createContext({});
 
 function CartProvider({children}){
-    const [paymentAccept, setPaymentAccept] = useState(JSON.parse(localStorage.getItem(`paymentAccept` || false)))
     const [cart, setCart] = useState(JSON.parse(localStorage.getItem(`@foodexplorer:cart`)) || []) // criando um localStorage inicializador
     const [orders, setOrders] = useState([])
 
@@ -46,10 +45,8 @@ function CartProvider({children}){
 
     async function handleResetCart(id, navigate) {
         localStorage.removeItem(`@foodexplorer:cart`);
-        localStorage.removeItem(`paymentAccept`);
 
         setCart([]);
-        setPaymentAccept(false);
 
         await api.delete(`/orders/${id}`);
         navigate("/");
@@ -59,18 +56,12 @@ function CartProvider({children}){
         localStorage.setItem(`@foodexplorer:cart`, JSON.stringify(cart));
     }, [cart])
 
-    useEffect(() => {
-        localStorage.setItem(`paymentAccept`, JSON.stringify(paymentAccept));
-    }, [paymentAccept])
-
     return(
         <CartContext.Provider value={{
             cart,
             handleAddDishToCart,
             handleRemoveDishFromCart,
             total: String(total.toFixed(2)).replace('.', ','),
-            paymentAccept,
-            setPaymentAccept,
             orders,
             setOrders,
             handleResetCart,
