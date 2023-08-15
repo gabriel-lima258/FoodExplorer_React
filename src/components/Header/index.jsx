@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import * as C from "./style";
 
 import {FiMenu} from  "react-icons/fi"
-import {PiReceiptBold} from  "react-icons/pi"
+import {PiBowlFood, PiReceiptBold} from  "react-icons/pi"
 
 import Polygon from  '../../assets/Polygon.svg'
 
@@ -23,7 +23,7 @@ export function Header(){
     }
 
     function handleOrderFood(){
-        navigate("/order");
+        navigate("/payment");
     }
 
     return(
@@ -47,9 +47,9 @@ export function Header(){
 
                         {
                             user.isAdmin ?
-                            <></>
+                            <PiBowlFood size={25}/>
                             : 
-                            <button>
+                            <button className="btn-cart">
                             <PiReceiptBold
                             size={25} 
                             onClick={handleOrderFood}

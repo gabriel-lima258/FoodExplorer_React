@@ -109,12 +109,14 @@ export const Payment = styled.div`
         }
     }
 
+
     #paymentPix img {
             width: clamp(5rem, 5rem + 20vw, 27rem);
             height: clamp(5rem, 5rem + 20vw, 27rem);
 
             margin-bottom: 2rem;
-        }
+
+    }
 
     .credit-card{
         display: flex;
@@ -127,6 +129,18 @@ export const Payment = styled.div`
         flex-direction: row;
         gap: 1.7rem;
         }
+    }
+
+    .process-payment{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .approved{
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     

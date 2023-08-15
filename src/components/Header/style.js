@@ -23,29 +23,34 @@ export const Nav = styled.nav`
     justify-content: space-between;
  
     button {
-        font-size: 1.4rem;
+        background: none;
+        color: ${({theme}) => theme.COLORS.LIGHT_100};
+    }
+
+    .btn-cart {
         background: none;
         position: relative;
+        font-size: 1rem;
 
         display: flex;
         justify-content: center;
         align-items: center;
 
-        color: ${({theme}) => theme.COLORS.LIGHT_100};
-    }
+        span {
+        position: absolute;
 
-    span {
-        position: relative;
-
-        width: 2rem;
-        height: 2rem;
+        width: 1.5rem;
+        height: 1.5rem;
         
-        bottom: .8rem;
-        right: .8rem;
+        bottom: 1.4rem;
+        left: 1.4rem;
        
         border-radius: 10rem;
-        background-color: red;
+        background-color: ${({theme}) => theme.COLORS.TOMATO_200};
     }
+    }
+
+    
 `
 
 export const Logo = styled(Link)`

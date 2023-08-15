@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useAuth } from "../../hooks/auth";
+import { useCart } from "../../hooks/cart";
 import { useNavigate } from "react-router-dom";
 import { api } from "../../services/api";
 
@@ -7,17 +8,19 @@ import * as C from "./style";
 
 import { Input } from "../Input";
 import { Button } from "../Button";
+import { ButtonText } from "../ButtonText";
 
 import {BsSearch} from  "react-icons/bs"
 import {PiReceiptBold} from  "react-icons/pi"
+import { FiLogOut } from "react-icons/fi";
 
 import Polygon from  '../../assets/Polygon.svg'
-import { ButtonText } from "../ButtonText";
-import { FiLogOut } from "react-icons/fi";
 
 export function HeaderDesktop({search}){
 
     const {user, signOut} = useAuth()
+    const {cart, orders} = useCart();
+
     const navigate = useNavigate();
 
     function handleSignOut(){
@@ -26,7 +29,7 @@ export function HeaderDesktop({search}){
     }
 
     function handleOrderFood(){
-        navigate("/order");
+        navigate("/payment");
     }
 
     function handleNewFood(){
@@ -35,6 +38,10 @@ export function HeaderDesktop({search}){
 
     function handleFavoriteFood(){
         navigate("/favorite");
+    }
+
+    function handleStatusFood(){
+        navigate("/order")
     }
 
     return(
@@ -61,7 +68,10 @@ export function HeaderDesktop({search}){
                         onChange={e => {search(e.target.value)}}
                     />
 
+                    
                     <ButtonText title="Meus favoritos" onClick={handleFavoriteFood}/>
+                    
+                    <ButtonText title="Históricos de pedidos" onClick={handleStatusFood}/>
 
                         {
                             user.isAdmin ?
@@ -71,7 +81,7 @@ export function HeaderDesktop({search}){
                             />
                             : 
                             <Button 
-                                title="Meus pedidos" 
+                                title={`Meus pedidos (${cart.length})`}
                                 onClick={handleOrderFood}
                                 icon={PiReceiptBold}
                             >

@@ -86,6 +86,22 @@ export const InputWrapper = styled.div`
         border-radius: .8rem;
     }
 
+    .image-div{
+        position: relative;
+    
+    > img {
+        position: absolute;
+        left: 13rem;
+        bottom: 6.2rem;
+        width: 5rem;
+        height: 5rem;
+        border-radius: 50%;
+     
+        object-fit: cover;
+        border: .1rem solid ${({ theme }) => theme.COLORS.LIGHT_400};
+    }
+    }
+
     @media (min-width: 768px) {
     flex-wrap: nowrap;
     column-gap: 3.2rem;

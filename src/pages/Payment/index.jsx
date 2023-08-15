@@ -20,13 +20,13 @@ import { PiReceiptBold } from 'react-icons/pi';
 
 import clock from '../../assets/Clock.svg';
 import qrCode from '../../assets/qrCode.svg';
-import approved from '../../assets/Aproved.svg';
+import approved from '../../assets/Approved.svg';
 
 
-export function Order(){
+export function Payment(){
     const [loading, setLoading] = useState(false);
 
-    const { cart, total, paymentAccept, setPaymentAccept, handleResetCart } = useCart();
+    const { cart, total, handleResetCart } = useCart();
     const { user } = useAuth()
 
     const navigate = useNavigate();
@@ -53,7 +53,6 @@ export function Order(){
 
     // Payment Finalization Function
     async function handleFinishPayment(cart) {
-        setPaymentAccept(true);
         
         const newCart = handleCreatedCart(cart)    
 
@@ -147,7 +146,7 @@ export function Order(){
 
     const [disabledButton, setDisabledButton] = useState(false);
 
-    const disabledbutton = () => {
+    const disableButton = () => {
         setDisabledButton(true);
 
         setIsCreditVisible(false);
@@ -244,8 +243,9 @@ export function Order(){
                                 {
                                     isPixVisible&&
                                     <div id='payment-Pix'>
-                                        <img src={qrCode} alt="" />
+                                        <img src={qrCode} alt="" onClick={() => handleFinishPayment(cart)}/>
                                     </div>
+                                    
                                 }
 
                                 {
@@ -300,7 +300,6 @@ export function Order(){
                                     isClockActive&&
                                     <div className="process-payment">
                                         <img src={clock} alt="" />
-                                        <span>Processando o pagamento!</span>
                                     </div>
                                 }
 
@@ -308,7 +307,6 @@ export function Order(){
                                     isApprovedActive&&
                                     <div className="approved">
                                         <img src={approved} alt="" />
-                                        <span>Pagamento aprovado!</span>
                                     </div>
                                 }
 

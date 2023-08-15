@@ -43,13 +43,10 @@ function CartProvider({children}){
         return value + item.price
     }, 0)
 
-    async function handleResetCart(id, navigate) {
+    async function handleResetCart() {
         localStorage.removeItem(`@foodexplorer:cart`);
 
         setCart([]);
-
-        await api.delete(`/orders/${id}`);
-        navigate("/");
     }
 
     useEffect(() => {

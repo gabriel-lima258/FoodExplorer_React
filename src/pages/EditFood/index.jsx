@@ -24,10 +24,10 @@ export function EditFood(){
     const [description, setDescription] = useState("");
     const [category, setCategory] = useState("");
     const [price, setPrice] = useState("");
-    const [image, setImage] = useState(null);
-
     const [ingredients, setIngredients] = useState([]); // vetores de valores
     const [newIngredient, setNewIngredient] = useState("");
+  
+    const [data, setData] = useState(null)
 
     const [loading, setLoading] = useState(false);
 
@@ -35,6 +35,18 @@ export function EditFood(){
     const params = useParams();
 
     const isMobile = useMediaQuery({ maxWidth: 1023})
+
+    const imageURL = data && `${api.defaults.baseURL}/files/${data.avatarFood}`;
+    const [image, setImage] = useState(null);
+    const [imageFile, setImageFile] = useState();
+
+    function handleChangeImage(event) {
+        const file = event.target.files[0];
+        setImage(file);
+
+        const imagePreview = URL.createObjectURL(file);
+        setImageFile(imagePreview);
+    }
 
     function handleBack(){
         navigate("/");
@@ -67,32 +79,51 @@ export function EditFood(){
     
     async function handleEditFood(){
 
-        const formData = new FormData();
+        const foodData = new FormData();
 
         setLoading(true)
-        formData.append("avatarFood", image);
-        formData.append("title", title);
-        formData.append("description", description);
-        formData.append("category", category);
-        formData.append("price", price);
+    
+        foodData.append("title", title);
+        foodData.append("description", description);
+        foodData.append("category", category);
+        foodData.append("price", price);
     
         ingredients.map(ingredient => (
-            formData.append("ingredients", ingredient)
+            foodData.append("ingredients", ingredient)
         ))
     
-        console.log(ingredients);
+        const imageData = new FormData();
+
+        imageData.append("avatarFood", image)
+
+        // api para atualizar imagem
+
+        if(image){
+            await api
+            .patch(`/foods/avatar/${params.id}`, imageData)
+            .then(alert("Imagem atualizada com sucesso!"))
+            .catch((error) => {
+                if (error.response) {
+                    alert(error.response.data.message);
+                } else {
+                    alert("Erro ao atualizar imagem!");
+                }
+        })
+    }
+
+        // api para atualizar dados
     
         await api
-        .put(`/foods/${params.id}`, formData)
-        .then(alert("Prato editado com sucesso!"))
+        .put(`/foods/${params.id}`, foodData)
+        .then(alert("Prato editado com sucesso!"), handleBack())
         .catch((error) => {
             if (error.response) {
-            alert(error.response.data.message);
+                alert(error.response.data.message);
             } else {
-            alert("Erro ao criar o prato");
+                alert("Erro ao criar o prato");
             }
         });
-
+        
         setLoading(false);
 
 }
@@ -101,7 +132,7 @@ export function EditFood(){
 
         async function fetchFood(){
             const response = await api.get(`/foods/${params.id}`);
-            console.log(response.data);
+            setData(response.data);
 
             const { category, title, price, description, ingredients } = response.data;
             setTitle(title);
@@ -135,16 +166,19 @@ export function EditFood(){
     
                         <C.InputWrapper>
     
-                        <Section title="Imagem do prato">
+                        <Section title="Imagem do prato" className="image-div">
+
+                                <img src={imageFile ? imageFile : imageURL} alt="" />
 
                                 <InputFile
                                 type="file"
                                 icon={AiOutlineDownload}
                                 label="Selecione imagem"
                                 onChange={e => setImage(e.target.files[0])}
+                                onClick={handleChangeImage}
                                 />
                                
-                            </Section>
+                        </Section>
     
                             <Section title="Nome">
                                 <Input

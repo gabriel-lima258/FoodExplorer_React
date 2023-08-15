@@ -16,7 +16,6 @@ import { PiPencilLineLight } from 'react-icons/pi'
 
 import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai'
 
-import imagePlaceholder from '../../assets/Mask group-10.png'
 
 export function Card({data, ...rest}){
   
@@ -28,7 +27,7 @@ export function Card({data, ...rest}){
     
     //====carrega e guarda favorites====//
     const { favorites, addDishToFavorite, removeDishFromFavorite } = useFavorites()
-    const isFavorite = favorites.some((dish) => dish.title === data.title)
+    const isFavorite = 0
     
     //====carrega a imagem do prato====//
     const imageURL = `${api.defaults.baseURL}/files/${data.avatarFood}` 
