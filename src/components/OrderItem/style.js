@@ -33,14 +33,14 @@ export const Content = styled.div`
     }
 
     strong {
-      font-size: 1.2rem;
+      font-size: 1.4rem;
       color: ${({ theme }) => theme.COLORS.LIGHT_400};
     }
   }
 
   > button {
     margin-top: 1rem;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     color: ${({ theme }) => theme.COLORS.TOMATO_400};
 
     &:disabled {

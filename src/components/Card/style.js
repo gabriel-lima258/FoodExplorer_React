@@ -25,7 +25,7 @@ export const Container = styled.div`
     }
     
 
-  .btn-favorites {
+  .btn-icon {
     display: flex;
     position: absolute;
     top: 1.2rem;
@@ -33,7 +33,11 @@ export const Container = styled.div`
    
     background: transparent;
     border: none;
-    color: ${({ theme, isFavorite }) => isFavorite ? theme.COLORS.TOMATO_200 : theme.COLORS.LIGHT_100};
+
+    > .btn-favorites {
+      background: transparent;
+      color: white;
+    }
   }
 
   .img {

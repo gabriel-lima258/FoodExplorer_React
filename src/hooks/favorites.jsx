@@ -6,11 +6,13 @@ function FavoritesProvider({children}) {
     const [favorites, setFavorites] = useState(JSON.parse(localStorage.getItem(`@foodexplorer:favorites`)) || [])
 
     function addDishToFavorite(data) {
-        setFavorites(...favorites, data);
+        setFavorites([...favorites, data]);
+        alert("Este item foi adicionado aos favoritos.");
     }
 
     function removeDishFromFavorite(data) {
         setFavorites(favorites.filter((dish) => dish.id !== data.id))
+        alert("Este item foi removido dos favoritos.");
     }
 
     useEffect(() =>{

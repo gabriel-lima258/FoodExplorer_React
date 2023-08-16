@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../hooks/auth';
 import { useFavorites } from '../../hooks/favorites';
 import { useCart } from '../../hooks/cart';
@@ -19,34 +19,39 @@ import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai'
 
 export function Card({data, ...rest}){
   
-    const [quantity, setQuantity] = useState(1);
-    const { user } = useAuth();
+    const isMobile = useMediaQuery({ maxWidth: 768 });
     
+    const { user } = useAuth();
+
+    const navigate = useNavigate();
+
     //====carrega e guarda cart====//
     const { handleAddDishToCart } = useCart();
     
     //====carrega e guarda favorites====//
     const { favorites, addDishToFavorite, removeDishFromFavorite } = useFavorites()
-    const isFavorite = 0
+    const isFavorite = favorites.some((dish) => dish.title === data.title);
     
     //====carrega a imagem do prato====//
     const imageURL = `${api.defaults.baseURL}/files/${data.avatarFood}` 
     
-    const isMobile = useMediaQuery({ maxWidth: 768 });
-
+    const [quantity, setQuantity] = useState(1);
 
     function handleAddQuantity(){
         return setQuantity(prevState => ++prevState);
     }
+
     function handleRemoveQuantity(){
         return setQuantity(prevState => --prevState);
     }
 
+    function handleDetails(){
+        navigate(`/details/${data.id}`)
+    }
+
     return(
         <Container {...rest}>  
-            <button className='btn-favorites'
-            onClick={() => isFavorite ? removeDishFromFavorite(data) : addDishToFavorite(data)}
-            >
+            <button className='btn-icon'>
                 {
                     user.isAdmin
                     ?
@@ -55,18 +60,25 @@ export function Card({data, ...rest}){
                     </Link>
                     :
                     <>
-                    {
-                        isFavorite ?
-                        <AiFillHeart size={30}/>
-                        :
-                        <AiOutlineHeart size={30}/>
-                    }
+                        <button 
+                        onClick={() => isFavorite ? removeDishFromFavorite(data) : addDishToFavorite(data)}
+                        className='btn-favorites'
+                        >
+                            {
+                                isFavorite ?
+                                <AiFillHeart size={30} color='red'/>
+                                :
+                                <AiOutlineHeart size={30}/>
+                            }
+                        </button>
+                        
+                   
                     </>            
                 }
             </button>
            
             <div className='img'>
-                <img src={imageURL} alt={data.title} />
+                <img src={imageURL} alt={data.title} onClick={handleDetails}/>
             </div>
 
             <Link type='button' to={`details/${data.id}`} className='title'>

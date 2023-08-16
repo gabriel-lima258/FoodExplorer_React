@@ -19,20 +19,21 @@ import { HeaderDesktop } from "../../components/HeaderDesktop";
 
 export function DetailsFood(){
     const [data, setData] = useState(null);
-    const [quantity, setQuantity] = useState(1);
-
+    
     const {user} = useAuth();
-
+    
     const { handleAddDishToCart } = useCart();
     console.log(data);
-
+    
     const navigate = useNavigate();
     const params = useParams();
-
+    
     const isMobile = useMediaQuery({ maxWidth: 1023})
-
+    
     const imageURL = data && `${api.defaults.baseURL}/files/${data.avatarFood}`;
-
+    
+    const [quantity, setQuantity] = useState(1);
+    
     function handleAddQuantity(){
         return setQuantity(prevState => ++prevState);
     

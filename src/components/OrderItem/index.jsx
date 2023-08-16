@@ -15,7 +15,7 @@ export function OrderItem({data}){
             </div>
             <C.Content>
                 <div className='description'>
-                    <span>{data.quantity} X {data.title}</span>
+                    <span>{data.quantity} x {data.title}</span>
                     <strong>R$ {data.price}</strong>
                 </div>
 
