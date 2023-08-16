@@ -69,24 +69,45 @@ export function HeaderDesktop({search}){
                     />
 
                     
-                    <ButtonText title="Meus favoritos" onClick={handleFavoriteFood}/>
+                  
                     
-                    <ButtonText title="Históricos de pedidos" onClick={handleStatusFood}/>
 
                         {
                             user.isAdmin ?
-                            <Button
-                                title="Novo prato"
-                                onClick={handleNewFood}
-                            />
-                            : 
-                            <Button 
-                                title={`Meus pedidos (${cart.length})`}
-                                onClick={handleOrderFood}
-                                icon={PiReceiptBold}
-                            >
-                                <PiReceiptBold size={25}/>
-                            </Button>
+                            <>
+                                <ButtonText 
+                                    title="Meus favoritos" 
+                                    onClick={handleFavoriteFood}
+                                />
+                                <ButtonText 
+                                    title="Históricos de pedidos" 
+                                    onClick={handleStatusFood}
+                                />
+                                <Button
+                                    title="Novo prato"
+                                    onClick={handleNewFood}
+                                />
+                            </>
+                            :
+                            <>
+                                <ButtonText 
+                                    title="Meus favoritos" 
+                                    onClick={handleFavoriteFood}
+                                />
+
+                                <ButtonText 
+                                    title="Acompanhar pedido" 
+                                    onClick={handleStatusFood}
+                                /> 
+
+                                <Button 
+                                    title={`Meus pedidos (${cart.length})`}
+                                    onClick={handleOrderFood}
+                                    icon={PiReceiptBold}
+                                >
+                                    <PiReceiptBold size={25}/>
+                                </Button>
+                            </>
                         }
 
                         <ButtonText

@@ -74,18 +74,18 @@ export const InputWrapper = styled.div`
     width: 100%;
 
     .tags {
-        height: 4.8rem;
+        height: auto;
         display: flex;
         flex-direction: row;
+        flex-wrap: wrap;
         justify-content: left;
         align-items: center;
         gap: 1.6rem;
        
         padding: .2rem .8rem;
-        background-color: ${({theme}) => theme.COLORS.DARK_800};
+        background-color: transparent;
         border-radius: .8rem;
     }
-
     .image-div{
         position: relative;
     

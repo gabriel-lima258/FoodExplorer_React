@@ -47,7 +47,13 @@ export const Nav = styled.nav`
        
         border-radius: 10rem;
         background-color: ${({theme}) => theme.COLORS.TOMATO_200};
-    }
+        }
+
+        p {
+            color: ${({theme}) => theme.COLORS.CAKE_200};
+            position: absolute;
+            top: 2.5rem;
+        }
     }
 
     

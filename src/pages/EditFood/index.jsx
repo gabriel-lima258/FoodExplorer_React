@@ -6,6 +6,10 @@ import { api } from '../../services/api';
 import * as C from './style'
 import {AiOutlineLeft, AiOutlineDownload} from 'react-icons/ai'
 import {FiArrowDown} from 'react-icons/fi'
+import {MdOutlineFastfood, MdFormatAlignLeft, MdOutlineAddShoppingCart} from 'react-icons/md'
+import {GiReceiveMoney} from 'react-icons/gi'
+import {BsChatLeftText} from 'react-icons/bs'
+
 
 import { Header } from '../../components/Header';
 import { HeaderDesktop } from "../../components/HeaderDesktop";
@@ -180,7 +184,7 @@ export function EditFood(){
                                
                         </Section>
     
-                            <Section title="Nome">
+                            <Section title="Nome" icon={MdOutlineFastfood}>
                                 <Input
                                 placeholder="Salada"
                                 value={title}
@@ -189,7 +193,7 @@ export function EditFood(){
                                 />
                             </Section>
                             
-                            <Section title="Categoria">
+                            <Section title="Categoria" icon={MdFormatAlignLeft}>
                                 <Select
                                 value={category}
                                 icon={FiArrowDown}
@@ -202,7 +206,7 @@ export function EditFood(){
                         
                         <C.InputWrapper>
     
-                        <Section title="Ingredientes">
+                        <Section title="Ingredientes" icon={MdOutlineAddShoppingCart}>
     
                             <div className="tags">
                                 {
@@ -227,7 +231,7 @@ export function EditFood(){
                               
                             </Section>
     
-                            <Section title="Preço">
+                            <Section title="Preço" icon={GiReceiveMoney}>
                                 <Input
                                 placeholder="R$ 10.00"
                                 value={price}
@@ -240,7 +244,7 @@ export function EditFood(){
                             
                         <C.InputWrapper>
     
-                            <Section title="Descrição">
+                            <Section title="Descrição" icon={BsChatLeftText}>
                                 <TextArea
                                 defaultValue={description}
                                 placeholder="Fale brevemente sobre o prato, seus ingredientes e composição"

@@ -9,6 +9,9 @@ import { ButtonText } from "../../components/ButtonText";
 import { Input } from "../../components/Input";
 import { Section } from "../../components/Section";
 
+import {MdOutlineEmail} from "react-icons/md"
+import {HiLockClosed} from "react-icons/hi"
+
 import Polygon from '../../assets/Polygon.svg'
  
 
@@ -45,6 +48,7 @@ export function SignIn(){
                 type="text"
                 placeholder="examplo@email.com.br"
                 onChange={e => setEmail(e.target.value)}
+                icon={MdOutlineEmail}
                 />
             </Section>
             
@@ -54,6 +58,7 @@ export function SignIn(){
                 type="password"
                 placeholder="No mínimo 6 caracteres"
                 onChange={e => setPassword(e.target.value)}
+                icon={HiLockClosed}
                 />
             </Section>
 

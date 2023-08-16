@@ -9,6 +9,10 @@ import { ButtonText } from "../../components/ButtonText";
 import { Input } from "../../components/Input";
 import { Section } from "../../components/Section";
 
+import {MdOutlineEmail} from "react-icons/md"
+import {HiLockClosed} from "react-icons/hi"
+import {BiSolidUser} from "react-icons/bi"
+
 import Polygon from '../../assets/Polygon.svg'
 
 export function SignUp(){
@@ -68,6 +72,7 @@ export function SignUp(){
                 type="text"
                 placeholder="Gabriel Silva"
                 onChange={e => setName(e.target.value)}
+                icon={BiSolidUser}
                 />
             </Section>
 
@@ -77,6 +82,7 @@ export function SignUp(){
                 type="text"
                 placeholder="examplo@email.com.br"
                 onChange={e => setEmail(e.target.value)}
+                icon={MdOutlineEmail}
                 />
             </Section>
 
@@ -86,6 +92,7 @@ export function SignUp(){
                 type="password"
                 placeholder="No mínimo 6 caracteres"
                 onChange={e => setPassword(e.target.value)}
+                icon={HiLockClosed}
                 />
             </Section>
 

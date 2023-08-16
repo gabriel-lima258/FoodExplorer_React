@@ -1,14 +1,23 @@
 import styled from 'styled-components';
 
 export const Container = styled.span`
-    font-size: 1.4rem;
-    padding: .4rem .8rem;
-    border-radius: .5rem;
-    margin-right: .6rem;
-    color: ${({theme}) => theme.COLORS.LIGHT_100};
-    background-color: ${({theme}) => theme.COLORS.DARK_1000};
 
-    @media(min-width: 1024px){
-        padding: .8rem 1.2rem;
+    .ingredients {
+        padding-inline: 1rem;
+    }
+
+    img {
+        display: flex;
+        margin: auto;
+        max-width: 6rem;
+        max-height: 6rem;
+        margin-bottom: 0.8rem;
+    }
+
+    span {
+        font-size: 1.8rem;
+        font-weight: 400;
+        line-height: 140%;
+        text-align: center;
     }
 `

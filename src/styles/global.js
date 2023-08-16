@@ -38,14 +38,41 @@ export default createGlobalStyle`
         
         font-size: 16px;
         outline: none;
+        
     } 
+
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus {
+        -webkit-text-fill-color: #fff;;
+        transition: background-color 5000s ease-in-out 0s;
+    }
 
     input[type="number"]::-webkit-inner-spin-button,
     input[type="number"]::-webkit-outer-spin-button {
     -webkit-appearance: none;
     appearance: none;
     margin: 0; /* Você pode ajustar isso conforme necessário */
-}
+    }
+
+   
+    option {
+    background-color: ${({theme}) => theme.COLORS.DARK_400}; 
+    color: white;
+    cursor: pointer;
+    }
+
+    select:hover {
+        color: aliceblue;
+    }
+
+  
+
+    select {
+    appearance: none; /* Remove a aparência padrão (não é suportado em todos os navegadores) */
+    -webkit-appearance: none; /* Para navegadores Webkit (Safari, Chrome) */
+    -moz-appearance: none; /* Para Firefox */
+    }
 
 
     a {

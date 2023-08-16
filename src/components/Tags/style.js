@@ -27,7 +27,7 @@ export const Container = styled.div`
 
     > input {
         height: 3.2rem;
-        width: 100%;
+        width: 15rem;
 
         padding: 1rem 1.6rem;
         font-size: 1.6rem;
@@ -41,4 +41,6 @@ export const Container = styled.div`
             color: ${({theme}) => theme.COLORS.LIGHT_500};
         }
     }
+
+    
 `

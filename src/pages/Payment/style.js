@@ -27,14 +27,7 @@ export const Content = styled.main`
     justify-content: space-around;
     padding-inline: 3rem;
 
-    .btn-payment {
-        margin-top: 3rem;
-        
-        align-self: end;
-        
-        width: 21.6rem;
-    }
-    
+
     h3 {
         color: ${({theme}) => theme.COLORS.LIGHT_300};
         font-family: Poppins;
@@ -43,13 +36,15 @@ export const Content = styled.main`
     }
 
     @media(max-width: 768px){
-        justify-content: flex-start;
+        flex-direction: column;
+        margin-bottom: 6rem;
     }
 
 
 `
 
 export const Orders = styled.div`
+
     display: flex;
     flex-direction: column;
     margin-top: 3.6rem;
@@ -63,16 +58,23 @@ export const Orders = styled.div`
         font-weight: 500;
     }
 
+    .empty-cart {
+        color: ${({theme}) => theme.COLORS.TOMATO_300};
+        font-family: Poppins;
+        font-size: 2rem;
+        font-weight: 500;
+       
+        margin-top: 4rem;
+    }
+
     @media(min-width: 767px){
         width: auto;
     }
 
-
- 
-    
 `
 
 export const Payment = styled.div`
+
     width: 35rem;
     margin-top: 3.6rem;
 

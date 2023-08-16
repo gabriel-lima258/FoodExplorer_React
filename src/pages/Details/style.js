@@ -80,7 +80,7 @@ export const Content = styled.main`
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            gap: 2.4rem;
+            gap: 2rem;
         }
 
         > .order {

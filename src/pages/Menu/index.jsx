@@ -37,6 +37,10 @@ export function Menu(){
         navigate("/favorite");
     }
 
+    function handleOrders(){
+        navigate("/order");
+    }
+
     useEffect(() => {
         async function fetchFood() {
             const response = await api.get(`/foods?title=${search}`)
@@ -68,13 +72,25 @@ export function Menu(){
                 <div className="buttons">
                     {
                         user.isAdmin ?
-                        <button onClick={handleNewFood}>
+                        <>
+                            <button onClick={handleNewFood}>
                             Novo Prato
-                        </button>
+                            </button>
+                            <button onClick={handleOrders}>
+                            Histórico de pedidos
+                            </button>
+                        
+                        </>
                         :
-                        <button onClick={handleFavorites}>
-                            Meus favoritos
-                        </button>
+                        <>
+                            <button onClick={handleFavorites}>
+                                Meus favoritos
+                            </button>
+                            
+                            <button onClick={handleOrders}>
+                                Acompanhar pedido
+                            </button>
+                        </>
                     }
                     <button onClick={handleSignOut}>Sair</button>
 

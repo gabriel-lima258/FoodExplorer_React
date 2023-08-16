@@ -23,6 +23,10 @@ export function Header(){
     }
 
     function handleOrderFood(){
+        navigate("/order");
+    }
+
+    function handlePaymentFood(){
         navigate("/payment");
     }
 
@@ -47,14 +51,27 @@ export function Header(){
 
                         {
                             user.isAdmin ?
-                            <PiBowlFood size={25}/>
-                            : 
-                            <button className="btn-cart">
+                            <button 
+                            className="btn-cart"
+                            >
                             <PiReceiptBold
                             size={25} 
                             onClick={handleOrderFood}
                             />
+                                <span>{orders.length}</span>
+                                <p>Pedidos</p>
+                            </button>
+                            : 
+                            <button 
+                            className="btn-cart"
+                            disabled={isCartIsEmpty}
+                            >
+                            <PiReceiptBold
+                            size={25} 
+                            onClick={handlePaymentFood}
+                            />
                                 <span>{cart.length}</span>
+                                <p>Carrinho</p>
                             </button>
                         }
                   

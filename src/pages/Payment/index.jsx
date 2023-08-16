@@ -15,7 +15,7 @@ import { Input } from '../../components/Input';
 import { Button } from '../../components/Button';
 
 import { MdPix } from 'react-icons/md';
-import { BsCreditCard } from 'react-icons/bs';
+import { BsCreditCard, BsFillCartXFill } from 'react-icons/bs';
 import { PiReceiptBold } from 'react-icons/pi';
 
 import clock from '../../assets/Clock.svg';
@@ -185,28 +185,19 @@ export function Payment(){
                         
                     </div>
 
-                    <div className="total">
-                        <p>Total R$ <span>{total}</span></p>
-                    </div>
-
                     
                     {
-                        isMobile ? 
-                        <Button 
-                        title="Avançar"
-                        className="btn-payment"
-                        />
+                        cart.length < 1  ? 
+                        <div className='empty-cart'>
+                            <p>Carrinho está vazio <BsFillCartXFill color='white'/></p>
+                        </div>
                         :
-                        <></>  
+                        <div className="total">
+                            <p>Total R$ <span>{total}</span></p>
+                        </div>
                     }
-                    
-
+                   
                 </C.Orders>
-
-            {
-                isMobile ?
-                <></>
-                :         
 
                 <C.Payment>
 
@@ -316,12 +307,7 @@ export function Payment(){
                         </div>
 
                 </C.Payment>
-        }
-
-            
-                    
-                    
-
+        
                 </C.Content>
 
             <Footer/>

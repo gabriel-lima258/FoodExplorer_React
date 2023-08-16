@@ -15,7 +15,8 @@ export function Orders(){
     const { user } = useAuth()
     const { orders, setOrders } = useCart()
 
-    const isMobile = useMediaQuery({ maxWidth: 1023})
+    const isMobile = useMediaQuery({ maxWidth: 768})
+    const isDesktop = useMediaQuery({ maxWidth: 1023})
 
     useEffect(() => {
         async function fetchOrders() {
@@ -55,13 +56,17 @@ export function Orders(){
     return(
         <C.Container>
 
-            {isMobile ? <Header/> : <HeaderDesktop/>}
+            {isDesktop ? <Header/> : <HeaderDesktop/>}
 
                 <C.Content>
 
-                    <h1>Pedidos</h1>
+                {
+                    isMobile ? 
 
                     <C.TableMobile>
+
+                    <h1>Pedidos</h1>
+
                         {
                             orders.length < 1 &&
                             <div className='noneOrders'>
@@ -71,11 +76,12 @@ export function Orders(){
 
                         {
                             user.isAdmin ?
-                            <div>
+                            <>
                                 {
                                     orders&&
                                     orders.map(order => (
-                                        <div key={String(order.id)}>
+                                        <div key={String(order.id)} className="ordersMobile">
+                                            <div className="col-3">
                                             <span>0000{order.id}</span>
                                             <select defaultValue={order.orderStatus} onChange={event => handleOrderStatus(order, event)}>
                                                     <option value="🟡 Pendente">🟡 Pendente</option>
@@ -84,21 +90,52 @@ export function Orders(){
                                                     <option value="🔴 Cancelado">🔴 Cancelado</option>
                                             </select>
                                             <span>{formatDate(order.created_at)}</span>
+                                            </div>
+
+                                            {
+                                                order.items.map((item) => (
+                                                    <span key={item.title}>{item.quantity} x {item.title} , {" "}</span>
+                                                ))
+                                            }
+
                                         </div>
                                     ))
                                 }
-                            </div>
+                            </>
                             :
-                            <></>
+                            <>
+                                {
+                                    orders&&
+                                    orders.map(order => (
+                                        <div key={String(order.id)} className="ordersMobile">
+                                            <div className="col-3">
+                                            <span>0000{order.id}</span>
+                                            <span>{order.orderStatus}</span>
+                                            <span>{formatDate(order.created_at)}</span>
+                                            </div>
+
+                                            {
+                                                order.items.map((item) => (
+                                                    <span key={item.title}>{item.quantity} x {item.title} , {" "}</span>
+                                                ))
+                                            }
+
+                                        </div>
+                                    ))
+                                }
+                            </>
                         }
 
 
 
                     </C.TableMobile>
 
-                    <h1>Histórico de pedidos</h1>
+                    :
 
                     <C.Table>
+
+                    <h1>Histórico de pedidos</h1>
+
                         <table>
                             <thead>
                                 <th>Status</th>
@@ -178,6 +215,9 @@ export function Orders(){
 
                         </table>
                     </C.Table>
+                }
+                    
+                    
                 </C.Content>
 
             <Footer/>

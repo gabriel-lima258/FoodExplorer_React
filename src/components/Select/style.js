@@ -21,18 +21,16 @@ export const Container = styled.div`
 
         border-radius: .5rem;
 
-        color: ${({ theme }) => theme.COLORS.LIGHT_400};
-        background-color:  ${({ theme }) => theme.COLORS.LIGHT_400};
+        color: ${({ theme }) => theme.COLORS.LIGHT_100};
+        background-color:  ${({ theme }) => theme.COLORS.LIGHT_100};
 
         background: transparent;
         border: none;
-        appearance: none;
-
-        display: flex;
-        align-items: center;
+        cursor: pointer;
+        outline: none;
 
         &::placeholder {
-            color: ${({theme}) => theme.COLORS.LIGHT_500};
+            color: ${({theme}) => theme.COLORS.LIGHT_400};
         }
 
     }

@@ -88,7 +88,7 @@ export function DetailsFood(){
                             
                             <IngredientTag 
                             key={String(ingredients.id)}  
-                            title={ingredients.name}
+                            ingredient={ingredients.name}
                             />
                         ))
                     }

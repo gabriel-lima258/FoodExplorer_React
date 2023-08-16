@@ -2,11 +2,14 @@ import { useState } from 'react';
 
 import { useNavigate } from 'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
-import { toast } from 'react-toastify';
 
 import * as C from './style'
 import {AiOutlineLeft, AiOutlineDownload} from 'react-icons/ai'
 import {FiArrowDown} from 'react-icons/fi'
+import {MdOutlineFastfood, MdFormatAlignLeft, MdOutlineAddShoppingCart} from 'react-icons/md'
+import {GiReceiveMoney} from 'react-icons/gi'
+import {BsChatLeftText} from 'react-icons/bs'
+import {PiImageFill} from 'react-icons/pi'
 
 import { Header } from '../../components/Header';
 import { HeaderDesktop } from "../../components/HeaderDesktop";
@@ -107,7 +110,7 @@ export function NewFood(){
 
                     <C.InputWrapper>
 
-                    <Section title="Imagem do prato">
+                    <Section title="Imagem do prato" icon={PiImageFill}>
                             <InputFile
                             type="file"
                             icon={AiOutlineDownload}
@@ -116,7 +119,7 @@ export function NewFood(){
                             />
                         </Section>
 
-                        <Section title="Nome">
+                        <Section title="Nome" icon={MdOutlineFastfood}>
                             <Input
                             placeholder="Salada"
                             type="text"
@@ -124,7 +127,7 @@ export function NewFood(){
                             />
                         </Section>
                         
-                        <Section title="Categoria">
+                        <Section title="Categoria" icon={MdFormatAlignLeft}>
                             <Select
                             icon={FiArrowDown}
                             onChange={e => setCategory(e.target.value)}
@@ -136,7 +139,7 @@ export function NewFood(){
                     
                     <C.InputWrapper>
 
-                    <Section title="Ingredientes">
+                    <Section title="Ingredientes" icon={MdOutlineAddShoppingCart}>
 
                         <div className="tags">
                             {
@@ -161,7 +164,7 @@ export function NewFood(){
                           
                         </Section>
 
-                        <Section title="Preço">
+                        <Section title="Preço" icon={GiReceiveMoney}>
                             <Input
                             placeholder="R$ 10.00"
                             type="text"
@@ -173,7 +176,7 @@ export function NewFood(){
                         
                     <C.InputWrapper>
 
-                        <Section title="Descrição">
+                        <Section title="Descrição" icon={BsChatLeftText}>
                             <TextArea
                             placeholder="Fale brevemente sobre o prato, seus ingredientes e composição"
                             onChange={e => setDescription(e.target.value)}
