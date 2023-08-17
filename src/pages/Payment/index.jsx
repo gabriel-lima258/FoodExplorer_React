@@ -19,7 +19,7 @@ import { BsCreditCard, BsFillCartXFill } from 'react-icons/bs';
 import { PiReceiptBold } from 'react-icons/pi';
 
 import clock from '../../assets/Clock.svg';
-import qrCode from '../../assets/qrCode.svg';
+import qrCode from '../../assets/QrCode.svg';
 import approved from '../../assets/Approved.svg';
 
 
