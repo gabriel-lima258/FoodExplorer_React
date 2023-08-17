@@ -24,12 +24,15 @@ export const Logo = styled.div`
     h1 {
         font-size: 3.6rem;
         font-weight: 700;
+        animation:focus-in-expand 1.5s cubic-bezier(.25,.46,.45,.94) both;
     }
 
     @media(min-width: 1024px){
         flex-direction: row;
         gap: 1rem;
     }
+
+    @keyframes focus-in-expand{0%{letter-spacing:-.5em;filter:blur(12px);opacity:0}100%{filter:blur(0);opacity:1}}
     
 `
 
@@ -42,7 +45,7 @@ export const Form = styled.form`
     align-items: center;
     gap: 3.2rem;
 
-    animation: slide-bot 0.3s backwards;
+    animation: slide-in-left 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 
     h1 {
         display: none;
@@ -65,6 +68,5 @@ export const Form = styled.form`
         }
     }
 
-    
-
+    @-webkit-keyframes slide-in-left{0%{-webkit-transform:translateX(-1000px);transform:translateX(-1000px);opacity:0}100%{-webkit-transform:translateX(0);transform:translateX(0);opacity:1}}@keyframes slide-in-left{0%{-webkit-transform:translateX(-1000px);transform:translateX(-1000px);opacity:0}100%{-webkit-transform:translateX(0);transform:translateX(0);opacity:1}}
 `;

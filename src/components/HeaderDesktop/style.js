@@ -45,7 +45,7 @@ export const Logo = styled(Link)`
 export const Nav = styled.nav`
     display: grid;
     grid-auto-flow: column;
-    grid-template-columns: 1fr 3fr 1fr 1fr 2fr auto;
+    grid-template-columns: auto 3fr auto auto auto auto;
     gap: 2rem;
     align-items: center;
 

@@ -59,6 +59,9 @@ export const Slogan = styled.div`
     
     background: ${({theme}) => theme.COLORS.GRADIENTS_200};
 
+    animation:slide-in-elliptic-left-fwd 2s cubic-bezier(.25,.46,.45,.94) both;
+
+
     @media(min-width: 1024px){
         margin-top: 7.2rem;
         margin-bottom: 6.3rem;
@@ -124,4 +127,6 @@ export const Slogan = styled.div`
 
         
     }
+
+    
 `

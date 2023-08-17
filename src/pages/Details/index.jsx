@@ -7,8 +7,8 @@ import { api } from "../../services/api";
 
 import * as C from './style';
 
-import {AiOutlineLeft} from 'react-icons/ai'
-import {PiReceiptBold} from  "react-icons/pi"
+import { AiOutlineLeft } from 'react-icons/ai'
+import { PiReceiptBold } from  "react-icons/pi"
 import { FiMinus, FiPlus } from 'react-icons/fi';
 
 import { Header } from '../../components/Header';

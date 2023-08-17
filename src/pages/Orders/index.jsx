@@ -1,6 +1,7 @@
 import { useAuth } from "../../hooks/auth";
 import { useCart } from '../../hooks/cart';
 import { useMediaQuery } from 'react-responsive';
+import { useEffect } from "react";
 import { api } from "../../services/api";
 
 import * as C from './style'
@@ -8,7 +9,6 @@ import * as C from './style'
 import { Footer } from '../../components/Footer'
 import { Header } from '../../components/Header';
 import { HeaderDesktop } from "../../components/HeaderDesktop";
-import { useEffect } from "react";
 
 export function Orders(){
 

@@ -14,12 +14,13 @@ export default createGlobalStyle`
     body, body * {
 
         &::-webkit-scrollbar{
-            height: .1rem;
-            width: .2rem;   
+            height: .0rem;
+            width: .1rem;   
             border: .1rem solid ${({theme}) => theme.COLORS.LIGHT_500};
+            
         }
         &::-webkit-scrollbar-thumb {
-            background: ${({theme}) => theme.COLORS.LIGHT_100};
+            background: ${({theme}) => theme.COLORS.LIGHT_100};   
             border-radius: 1rem;
         }
     }

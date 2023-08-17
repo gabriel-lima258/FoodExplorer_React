@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import { useFavorites } from '../../hooks/favorites';
 import { useMediaQuery } from 'react-responsive';
+import { api } from '../../services/api';
 
 import * as C from './style';
 
@@ -11,7 +11,6 @@ import { Card } from '../../components/Card';
 import { Footer } from '../../components/Footer';
 
 import Slogan from '../../assets/Slogan_biscoito.svg';
-import { api } from '../../services/api';
 
 
 export function Home(){

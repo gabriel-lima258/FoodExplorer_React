@@ -76,11 +76,7 @@ export function HeaderDesktop({search}){
                             user.isAdmin ?
                             <>
                                 <ButtonText 
-                                    title="Meus favoritos" 
-                                    onClick={handleFavoriteFood}
-                                />
-                                <ButtonText 
-                                    title="Históricos de pedidos" 
+                                    title={`Históricos de Pedidos (${orders.length})`} 
                                     onClick={handleStatusFood}
                                 />
                                 <Button

@@ -11,7 +11,6 @@ import { Container } from './style';
 import { Button } from '../Button';
 
 import { FiMinus, FiPlus } from 'react-icons/fi';
-import { FaAngleRight } from 'react-icons/fa'
 import { PiPencilLineLight } from 'react-icons/pi'
 
 import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai'
@@ -82,7 +81,8 @@ export function Card({data, ...rest}){
             </div>
 
             <Link type='button' to={`details/${data.id}`} className='title'>
-                <h3>{data.title} <FaAngleRight/></h3>
+                <h3>{data.title} > </h3>
+                
             </Link>
 
             {

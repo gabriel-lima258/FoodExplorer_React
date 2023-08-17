@@ -7,7 +7,6 @@ import { api } from "../../services/api";
 
 import * as C from './style'
 
-import { OrderItem } from '../../components/OrderItem';
 import { Footer } from '../../components/Footer'
 import { Header } from '../../components/Header';
 import { HeaderDesktop } from "../../components/HeaderDesktop";

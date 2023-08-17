@@ -1,7 +1,7 @@
 import { useState } from 'react';
-
 import { useNavigate } from 'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
+import { api } from '../../services/api';
 
 import * as C from './style'
 import {AiOutlineLeft, AiOutlineDownload} from 'react-icons/ai'
@@ -22,7 +22,6 @@ import { Select } from '../../components/Select';
 import { Section } from '../../components/Section';
 import { Tags } from '../../components/Tags';
 import { TextArea } from '../../components/TextArea';
-import { api } from '../../services/api';
 
 export function NewFood(){
     const [title, setTitle] = useState(""); // valor inicial

@@ -9,7 +9,6 @@ import {AiOutlineClose} from 'react-icons/ai';
 import {BsSearch} from 'react-icons/bs';
 
 import { Input } from '../../components/Input';
-import { Card } from '../../components/Card';
 import { Footer } from '../../components/Footer'
 
 export function Menu(){
